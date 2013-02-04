@@ -6,19 +6,24 @@
 // Simple loop with an array
 int roundFunction (int **A)
 {
+    //Theta step
     int C[ARRAY_WIDTH], D[ARRAY_WIDTH];
-    for (int count = 0; count < ARRAY_WIDTH; count++)
+    //xor every lane within a column together
+    //repeat this for all columns
+    for (int x = 0; x < ARRAY_WIDTH; x++)
     {
-        C[count] = A[count][0] ^ A[count][1] ^ A[count][2] ^ A[count][3] ^ A[count][4];
+        C[x] = A[x][0] ^ A[x][1] ^ A[x][2] ^ A[x][3] ^ A[x][4];
     }
-    for (int count = 0; count < ARRAY_WIDTH; count++)
+    for (int x = 0; x < ARRAY_WIDTH; x++)
     {
-        C[count] = A[count][0] ^ A[count][1] ^ A[count][2] ^ A[count][3] ^ A[count][4];
+        D[x] = C[(x-1) % ARRAY_WIDTH];
     }
     return 0;
     
 }
 int main() {
+    //NOTE:Since using integers to represent lanes, certain permuation width sizes MIGHT 
+    //     get distorted values. Will have to look into it and refactor if that is the case.
     //Look into using loops for repeated instructions
     int result = 0;
     //loop: for (int round = 0; round <1; round++)
