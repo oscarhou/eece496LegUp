@@ -5,7 +5,19 @@
 #define LANE_WIDTH 32
 #define PERM_WIDTH 25 * LANE_WIDTH 
 
-//Rotate a 32bit integer
+/*
+Round Constants
+*/
+unsigned long long RC[24];
+/*
+Rotation Offset 2d Array
+*/
+int rotateArray[5][5] = {0, 1, 62, 28, 27,
+                         36, 44, 6, 55, 20,
+                         3, 10, 43, 25, 39,
+                         41, 45, 15, 21, 8,
+                         18, 2, 61, 56, 14};
+//Rotate a  LANE SIZE-bit integer
 int rotateLeft(int lane, int rotateCount)
 {
     return (lane << rotateCount) | (lane >> (LANE_WIDTH - rotateCount));
@@ -15,6 +27,7 @@ void roundFunction (int A[ARRAY_WIDTH][ARRAY_WIDTH])
 {
     //Theta step
     int C[ARRAY_WIDTH], D[ARRAY_WIDTH];
+    int B[5][5];
     //xor every lane within a column together
     //repeat this for all columns
     for (int x = 0; x < ARRAY_WIDTH; x++)
@@ -32,7 +45,25 @@ void roundFunction (int A[ARRAY_WIDTH][ARRAY_WIDTH])
             A[x][y] =  A[x][y] ^ D[x];
         }
     }
+
+    //rho and pi steps
+    for (int x = 0; x < ARRAY_WIDTH; x++)
+    {
+        for (int y = 0; y < ARRAY_WIDTH; y++)
+        {
+            B[y][ (2*x+3*y) % 5] = rotateLeft(A[x][y], rotateArray[x][y]);
+        }
+    }
     
+    //chi step
+    for (int x = 0; x < ARRAY_WIDTH; x++)
+    {
+        for (int y = 0; y < ARRAY_WIDTH; y++)
+        {
+            A[x][y] = B[x][y] ^ ((! B[(x+1) % 5][y]) & B[(x+2) % 5][y]);
+        }
+    }
+
     return;
     
 }
@@ -64,10 +95,37 @@ int main() {
     A[2][4] = 8;
     A[3][4] = 1;
     A[4][2] = 1;
-    //loop: for (int round = 0; round <1; round++)
-    for (int round = 0; round < ROUNDS; round++)
+    RC[0] = 0x0000000000000001;
+    RC[1] = 0x0000000000008082;
+    RC[2] = 0x800000000000808A;
+    RC[3] = 0x8000000080008000;
+    RC[4] = 0x000000000000808B;
+    RC[5] = 0x0000000080000001;
+    RC[6] = 0x8000000080008081;
+    RC[7] = 0x8000000000008009;
+    RC[8] = 0x000000000000008A;
+    RC[9] = 0x0000000000000088;
+    RC[10] = 0x0000000080008009;
+    RC[11] = 0x000000008000000A;
+    RC[12] = 0x000000008000808B;
+    RC[13] = 0x800000000000008B;
+    RC[14] = 0x8000000000008089;
+    RC[15] = 0x8000000000008003;
+    RC[16] = 0x8000000000008002;
+    RC[17] = 0x8000000000000080;
+    RC[18] = 0x000000000000800A;
+    RC[19] = 0x800000008000000A;
+    RC[20] = 0x8000000080008081;
+    RC[21] = 0x8000000000008080;
+    RC[22] = 0x0000000080000001;
+    RC[23] = 0x8000000080008008;
+
+
+    loop: for (int round = 0; round < ROUNDS; round++)
     {
         roundFunction(A);
+        //Iota step
+        A[0][0] = A[0][0] ^ RC[round];
         printf("%x, %x, %x, %x, %x\n", A[0][0], A[0][1],A[0][2],A[0][3],A[0][4]);
         printf("%x, %x, %x, %x, %x\n", A[1][0], A[1][1],A[1][2],A[1][3],A[1][4]);
         printf("%x, %x, %x, %x, %x\n", A[2][0], A[2][1],A[2][2],A[2][3],A[2][4]);
