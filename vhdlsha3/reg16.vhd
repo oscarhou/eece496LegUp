@@ -1,10 +1,12 @@
 -- 16 bit register
 library ieee;
 use ieee.std_logic_1164.all;
+library work;
+use work.sha3_types.all;
 
 ENTITY reg16 IS
-PORT(inData    :in std_logic_vector(15 downto 0);
-	  outData   :out std_logic_vector(15 downto 0);
+PORT(inData    :in lane;
+	  outData   :out lane;
 	  enabled :in std_logic;
 	  clk: in std_logic;
 	  reset: in std_logic );
