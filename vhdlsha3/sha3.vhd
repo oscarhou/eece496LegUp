@@ -15,7 +15,6 @@ signal test,test2:lane;
 --state registers
 COMPONENT shaMemory
 	PORT(write_l: in std_logic;
-		  write_row: in std_logic;
 		  outData:out lane;
 		  inData: in lane;
 		  laneRow: std_logic_vector(2 downto 0);
@@ -23,5 +22,5 @@ COMPONENT shaMemory
 END COMPONENT;
 BEGIN
 
-MEM:shaMemory port map ('1', '1', test,test2, "100", "001");
+MEM:shaMemory port map ('1', test,test2, "100", "001");
 END shaArch;
