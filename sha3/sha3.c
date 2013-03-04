@@ -53,8 +53,8 @@ void roundFunction (Lane *A)
 	printf("C Value  After theta :%d, %d, %d, %d, %d\n", C[0], C[1],C[2],C[3],C[4]);
     for (x = 0; x < ARRAY_WIDTH; x++)
     {
-        //D[x] = (rotateLeft(C[(x+1) % 5], 1) ^ C[(x+4) % 5]) ;
-        D[x] = (ROL(C[(x+1) % 5], 1) ^ C[(x+4) % 5]) ;
+        D[x] = (rotateLeft(C[(x+1) % 5], 1) ^ C[(x+4) % 5]) ;
+        //D[x] = (ROL(C[(x+1) % 5], 1) ^ C[(x+4) % 5]) ;
 
 	    //printf("C x-1 %d, Rotate Left Value = %d, value being rotated %d\n ", C[(x+4)%ARRAY_WIDTH], rotateLeft(C[(x+1)%ARRAY_WIDTH], 1), C[(x+1) % ARRAY_WIDTH]);
     }
