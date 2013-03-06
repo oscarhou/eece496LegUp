@@ -6,7 +6,6 @@ use work.sha3_types.all;
 
 
 ENTITY shaMemory IS
-
 	PORT(write_l: in std_logic;
 		  clk: in std_logic;
 		  outData:out state;
@@ -48,10 +47,28 @@ BEGIN
 		WHEN "100" => colEnable <= "00001";
 		WHEN OTHERS => colEnable <= "XXXXX";
 	END CASE;
-	
-	
 END PROCESS;
-outData(0)(0) <= rOut(0);
+
+--Output all of the state, if blocks don't need to use it they don't read it.
+GenerateRowOne: for i in 0 to 4 generate
+	REGOUT0: outData(0)(i) <= rOut(i);
+	end generate GenerateRowOne;
+	
+GenerateRowTwo: for i in 0 to 4 generate
+	REGOUT1: outData(1)(i) <= rOut(i);
+	end generate GenerateRowTwo;
+	
+GenerateRowThree: for i in 0 to 4 generate
+	REGOUT1: outData(1)(i) <= rOut(i);
+	end generate GenerateRowThree;
+
+GenerateRowFour: for i in 0 to 4 generate
+	REGOUT1: outData(1)(i) <= rOut(i);
+	end generate GenerateRowFour;
+
+GenerateRowFive: for i in 0 to 4 generate
+	REGOUT1: outData(1)(i) <= rOut(i);
+	end generate GenerateRowFive;
 -- First row of the state
 R1:reg16 port map (inData,rOut(0), colEnable(0) and rowEnable(0), clk, '1');
 R2:reg16 port map (inData,rOut(1), colEnable(1) and rowEnable(0), clk, '1');

@@ -5,8 +5,8 @@ library work;
 use work.sha3_types.all;
 
 ENTITY reg16 IS
-PORT(inData    :in lane;
-	  outData   :out lane;
+PORT(rInData    :in lane;
+	  rOutData   :out lane;
 	  enabled :in std_logic;
 	  clk: in std_logic;
 	  reset: in std_logic );
@@ -17,9 +17,9 @@ begin
 	process(enabled, reset, clk)
 	begin
 		if (reset = '1') then	
-			outData <= "0000000000000000";
+			rOutData <= "0000000000000000";
 		elsif (rising_edge(clk) and enabled='1') then
-			outData <= inData;
+			rOutData <= rInData;
 		end if;
 	end process;
 end registerArch;
