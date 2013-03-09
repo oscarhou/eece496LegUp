@@ -52,21 +52,21 @@ BEGIN
 END PROCESS;
 
 GenerateEnabledRowOne: for i in 0 to 4 generate
-	EnabledReg0: enabledReg(i) <= colEnable(i) and rowEnable(0);
+	EnabledReg0: enabledReg(4 - i) <= colEnable(i) and rowEnable(4);
 	end generate GenerateEnabledRowOne;
 GenerateEnabledRowTwo: for i in 0 to 4 generate
-	EnabledReg1: enabledReg(i + 5) <= colEnable(i) and rowEnable(1);
+	EnabledReg1: enabledReg(4 - i + 5) <= colEnable(i) and rowEnable(3);
 	end generate GenerateEnabledRowTwo;
 GenerateEnabledRowThree: for i in 0 to 4 generate
-	EnabledReg2: enabledReg(i + 10) <= colEnable(i) and rowEnable(2);
+	EnabledReg2: enabledReg(4 - i + 10) <= colEnable(i) and rowEnable(2);
 	end generate GenerateEnabledRowThree;
 	
 GenerateEnabledRowFour: for i in 0 to 4 generate
-	EnabledReg3: enabledReg(i + 15) <= colEnable(i) and rowEnable(3);
+	EnabledReg3: enabledReg(4 - i + 15) <= colEnable(i) and rowEnable(1);
 	end generate GenerateEnabledRowFour;
 	
 GenerateEnabledRowFive: for i in 0 to 4 generate
-	EnabledReg4: enabledReg(i + 20) <= colEnable(i) and rowEnable(4);
+	EnabledReg4: enabledReg(4 - i + 20) <= colEnable(i) and rowEnable(0);
 	end generate GenerateEnabledRowFive;
 --Output all of the state, if blocks don't need to use it they don't read it.
 GenerateRowOne: for i in 0 to 4 generate
