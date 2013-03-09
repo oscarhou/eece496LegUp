@@ -30,25 +30,30 @@ COMPONENT reg16
 END COMPONENT;
 BEGIN
 -- If lanRow == 001 and laneCol == 001 then rowEnable = 01000 and colEnable = 01000
-PROCESS(laneRow, laneCol)
+PROCESS(laneRow, laneCol, write_l)
 BEGIN
-	CASE laneRow IS
-		WHEN "000" => rowEnable <= "10000";
-		WHEN "001" => rowEnable <= "01000";
-		WHEN "010" => rowEnable <= "00100";
-		WHEN "011" => rowEnable <= "00010";
-		WHEN "100" => rowEnable <= "00001";
-		WHEN OTHERS => rowEnable <= "XXXXX";
-	END CASE;
-	
-	CASE laneCol IS
-		WHEN "000" => colEnable <= "10000";
-		WHEN "001" => colEnable <= "01000";
-		WHEN "010" => colEnable <= "00100";
-		WHEN "011" => colEnable <= "00010";
-		WHEN "100" => colEnable <= "00001";
-		WHEN OTHERS => colEnable <= "XXXXX";
-	END CASE;
+	IF (write_l = '1') THEN
+		rowEnable <= "00000";
+		colEnable <= "00000";
+	ELSE
+		CASE laneRow IS
+			WHEN "000" => rowEnable <= "10000";
+			WHEN "001" => rowEnable <= "01000";
+			WHEN "010" => rowEnable <= "00100";
+			WHEN "011" => rowEnable <= "00010";
+			WHEN "100" => rowEnable <= "00001";
+			WHEN OTHERS => rowEnable <= "00000";
+		END CASE;
+		
+		CASE laneCol IS
+			WHEN "000" => colEnable <= "10000";
+			WHEN "001" => colEnable <= "01000";
+			WHEN "010" => colEnable <= "00100";
+			WHEN "011" => colEnable <= "00010";
+			WHEN "100" => colEnable <= "00001";
+			WHEN OTHERS => colEnable <= "00000";
+		END CASE;
+	END IF;
 END PROCESS;
 
 GenerateEnabledRowOne: for i in 0 to 4 generate

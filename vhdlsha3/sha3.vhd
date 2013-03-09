@@ -20,7 +20,7 @@ SIGNAL mainState: std_logic_vector(4 downto 0);
 SIGNAL dataInCounter :integer range 0 to 25;
 SIGNAL colSelect: std_logic_vector(2 downto 0);
 SIGNAL rowSelect: std_logic_vector(2 downto 0);
-signal test:lane;
+SIGNAL readFromMem: std_logic;
 signal memOut:state;
 signal thetaState:row;
 --state registers
@@ -40,42 +40,64 @@ COMPONENT theta
 		  clk: std_logic);
 END COMPONENT;
 BEGIN
-PROCESS(dataInCounter)
-BEGIN
-	CASE dataInCounter IS
-		WHEN 0 =>
-			rowSelect <= "000";
-			colSelect <= "000";
-		WHEN 1 =>
-			rowSelect <= "000";
-			colSelect <= "001";
-		WHEN 2 =>
-			rowSelect <= "000";
-			colSelect <= "010";
-		WHEN OTHERS => 
-			rowSelect <= "000";
-			colSelect <= "000";
-			
-	END CASE;
-END PROCESS;
+--PROCESS(dataInCounter)
+--
+--BEGIN
+--	CASE dataInCounter IS
+--		WHEN 0 =>
+--			rowSelect <= "000";	
+--			colSelect <= "000";
+--		WHEN 1 =>
+--			rowSelect <= "000";
+--			colSelect <= "001";
+--		WHEN 2 =>
+--			rowSelect <= "000";
+--			colSelect <= "010";
+--		WHEN 3 =>
+--			rowSelect <= "000";
+--			colSelect <= "010";
+--		WHEN 4 =>
+--			rowSelect <= "000";
+--			colSelect <= "100";
+--		WHEN  =>
+--			rowSelect <= "000";
+--			colSelect <= "100";
+--		WHEN OTHERS => 
+--			rowSelect <= "000";
+--			colSelect <= "000";
+--			
+--	END CASE;
+--END PROCESS;
 
 PROCESS (clk, reset)
 BEGIN
 	IF (reset = '1') THEN
 		mainState <= "00000";
 		dataInCounter <= 0;
+		colSelect <= "000";
+		rowSelect <= "000";
 	ELSIF (rising_edge(clk)) THEN
 		CASE (mainState) IS
 			--First state -- Load data with the initial state;
 			WHEN "00000" =>
+				readFromMem <= '0';
 				if (dataInCounter < 25) then
 					mainState <= "00000";
 					dataInCounter <= dataInCounter + 1;
+					if (colSelect < 4) then
+						colSelect <= colSelect + 1;
+					else
+						colSelect <= "000";
+						rowSelect <= rowSelect + 1;
+					end if;
 				else 
+					colSelect <= "111";
+					rowSelect <= "111";
+					readFromMem <= '1'; 
 					mainState <= "00001";
 				end if;
 			WHEN "00001" =>
-				mainState <="00000";
+				mainState <="00001";
 					
 			WHEN OTHERS => 
 				mainState <= "00000";
@@ -84,6 +106,6 @@ BEGIN
 END PROCESS;
 memOutOut <= memOut;
 dataOutCount <= dataInCounter;
-MEM:shaMemory port map ('1', clk, memOut,inputLane, "010", "100", reset);
+MEM:shaMemory port map (readFromMem, clk, memOut,inputLane, rowSelect, colSelect, reset);
 THETASTEP:theta port map(memOut, thetaState, '1', clk);
 END shaArch;
