@@ -30,7 +30,7 @@ END PROCESS;
 -- Get the C row
 
 ThetaFillC: for i in 0 to 4 generate
-	CLoop: C(i) <= thetaSaveState(i)(0) xor thetaSaveState(i)(1) xor thetaSaveState(i)(2) xor thetaSaveState(i)(3) xor thetaSaveState(i)(4);
+	CLoop: C(i) <= thetaSaveState(0)(i) xor thetaSaveState(1)(i) xor thetaSaveState(2)(i) xor thetaSaveState(3)(i) xor thetaSaveState(4)(i);
 end generate ThetaFillC;
 	--	
 D(0) <= (C(1)(14 downto 0) & C(1)(15)) xor C(4);

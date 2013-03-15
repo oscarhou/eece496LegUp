@@ -30,6 +30,7 @@ END PROCESS;
 internalState(0)(0) <= memState(0)(0);
 ROTATE1: for i in 0 to 15 generate
 	internalState(0)(1)(i) <= memState(0)(1)((i - 1) mod 16);
+	--internalState(0)(1)(i downto 0) <= memState(0)(1)(i downto 1) & '1';
 end generate;
 ROTATE2: for i in 0 to 15 generate
 	internalState(0)(2)(i) <= memState(0)(2)((i - 62) mod 16);
@@ -104,12 +105,13 @@ end generate;
 BStateY:for y in 0 to 4 generate
 	BstateX: for x in 0 to 4 generate
 		BstateI: for i in 0 to 15 generate
+			--The i can probably be removed
 			internalBState((2*x+3*y) mod 5)(y)(i)<=internalState(y)(x)(i);
 		end generate;	
 	end generate;
 end generate;
 
-outState <= internalState(0);
+outState <= internalBState(0);
 
 
 END rhoAndPiArch;

@@ -61,3 +61,5 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT 896
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
+set_global_assignment -name VECTOR_WAVEFORM_FILE rhoandpi.vwf
+set_global_assignment -name SIMULATION_MODE FUNCTIONAL
