@@ -9,9 +9,7 @@ use work.sha3_types.all;
 
 ENTITY rhoandpi IS
 PORT(inState: in state;
-	 outState: out row;
-	 hold: in std_logic;
-	 clk: in std_logic);
+	 outState: out state);
 END rhoandpi;
 
 ARCHITECTURE rhoAndPiArch OF rhoandpi IS
@@ -25,17 +23,12 @@ CONSTANT rotateConstants : rotateMatrix := ((0, 1, 62, 28, 27),
 SIGNAL internalState: state;
 SIGNAL memState: state;
 SIGNAL internalBState: state;
+BEGIN
 
-BEGIN
-PROCESS(clk, hold)
-BEGIN
-	IF (rising_edge(clk) and hold ='0') THEN
-		memState <= inState;
-	END IF;	
-END PROCESS;
+memState <= inState;
 
 --Technique of performing bitwise rotation manually is adapted from Keccak sample VHDL code
---Available at: http://keccak.noekeon.org/KeccakVHDL-3.1.zip
+--Available at: http://keccak.noekeon.org
 ROTATEX: for x in 0 to 4 generate
 	ROTATEY: for y in 0 to 4 generate
 		ROTATEBIT: for i in 0 to 15 generate
@@ -44,13 +37,7 @@ ROTATEX: for x in 0 to 4 generate
 	end generate;
 end generate;
 
---BStateY:for y in 0 to 4 generate
---	BstateX: for x in 0 to 4 generate
---			internalBState((2*x+3*y) mod 5)(y)<=internalState(y)(x);
---	end generate;
---end generate;
-
-outState <= internalBState(1);
+outState <= internalBState;
 
 
 END rhoAndPiArch;

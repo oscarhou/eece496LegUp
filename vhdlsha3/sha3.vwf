@@ -5442,6 +5442,26 @@ SIGNAL("thetaStateOut[0][15]")
 	PARENT = "thetaStateOut[0]";
 }
 
+SIGNAL("thetaHoldOut")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("rhoandpiHoldOut")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
 GROUP("memOutOut[0][0]")
 {
 	MEMBERS = "memOutOut[0][0][0]", "memOutOut[0][0][1]", "memOutOut[0][0][2]", "memOutOut[0][0][3]", "memOutOut[0][0][4]", "memOutOut[0][0][5]", "memOutOut[0][0][6]", "memOutOut[0][0][7]", "memOutOut[0][0][8]", "memOutOut[0][0][9]", "memOutOut[0][0][10]", "memOutOut[0][0][11]", "memOutOut[0][0][12]", "memOutOut[0][0][13]", "memOutOut[0][0][14]", "memOutOut[0][0][15]";
@@ -5597,24 +5617,174 @@ GROUP("memOutOut[4]")
 	MEMBERS = "memOutOut[4][0]", "memOutOut[4][1]", "memOutOut[4][2]", "memOutOut[4][3]", "memOutOut[4][4]";
 }
 
-SIGNAL("thetaHoldOut")
+SIGNAL("rhoandpiOutRow")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 16;
+	LSB_INDEX = 0;
 	DIRECTION = OUTPUT;
 	PARENT = "";
 }
 
-SIGNAL("rhoandpiHoldOut")
+SIGNAL("rhoandpiOutRow[15]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "";
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[14]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[13]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[12]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[11]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[10]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[9]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[8]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[7]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[6]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[5]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[4]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
+}
+
+SIGNAL("rhoandpiOutRow[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "rhoandpiOutRow";
 }
 
 TRANSITION_LIST("clk")
@@ -10469,6 +10639,150 @@ TRANSITION_LIST("thetaHoldOut")
 }
 
 TRANSITION_LIST("rhoandpiHoldOut")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[15]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[14]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[13]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[12]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[11]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[10]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[9]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[8]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[7]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[6]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[5]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[4]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 50000.0;
+	}
+}
+
+TRANSITION_LIST("rhoandpiOutRow[0]")
 {
 	NODE
 	{
@@ -16241,6 +16555,176 @@ DISPLAY_LINE
 	TREE_INDEX = 573;
 	TREE_LEVEL = 2;
 	PARENT = 557;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 574;
+	TREE_LEVEL = 0;
+	CHILDREN = 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 587, 588, 589, 590;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[15]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 575;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[14]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 576;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[13]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 577;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[12]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 578;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[11]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 579;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[10]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 580;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[9]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 581;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[8]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 582;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[7]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 583;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[6]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 584;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[5]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 585;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[4]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 586;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 587;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 588;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 589;
+	TREE_LEVEL = 1;
+	PARENT = 574;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "rhoandpiOutRow[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 590;
+	TREE_LEVEL = 1;
+	PARENT = 574;
 }
 
 TIME_BAR

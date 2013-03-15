@@ -15,6 +15,7 @@ PORT(inputLane :in lane;
 	  rowOut: out std_logic_vector(2 downto 0);
 	  systemState: out std_logic_vector (4 downto 0);
 	  thetaStateOut: out row;
+	  rhoandpiOutRow:out lane;
 	  thetaHoldOut:out std_logic;
 	  rhoandpiHoldOut: out std_logic;
 	  clk:in std_logic;
@@ -32,7 +33,10 @@ SIGNAL rowSelect: std_logic_vector(2 downto 0);
 SIGNAL readFromMem: std_logic;
 SIGNAL thetaHold: std_logic;
 SIGNAL thetaStart: std_logic;
+SIGNAL thetaInState : state;
 SIGNAL rhoandpiOutState:state;
+SIGNAL rhoandpiInState: state;
+SIGNAL chiOutState:state;
 SIGNAL rhoandpiHold:std_logic;
 SIGNAL roundConstant: std_logic_vector(15 downto 0);
 SIGNAL memInput: lane;
@@ -48,17 +52,17 @@ COMPONENT shaMemory
 		  laneCol: std_logic_vector(2 downto 0);
 		  reset: in std_logic);
 END COMPONENT;
+COMPONENT chi IS
+PORT (chiInState: in state;
+      chiOutState: out state);      
+END COMPONENT;
 COMPONENT theta
-	PORT(hold:in std_logic;
-		 thetaInData: in state;
-		 thetaOutData:out row;
-		 clk:in std_logic);
+	PORT(thetaInData: in state;
+		 thetaOutData:out row);
 END COMPONENT;
 COMPONENT rhoandpi IS
 PORT(inState: in state;
-	 outState: out state;
-	 hold: in std_logic;
-	 clk: in std_logic);
+	 outState: out state);
 END COMPONENT;
 BEGIN
 --NOTE: The first index of the state is the row index(\/), the second is the column index (-->). 
@@ -101,29 +105,25 @@ BEGIN
 				end if;
 			--wait for 2 clocks for signals to settle
 			WHEN "00001" =>
-				if (clockCounter = 2) then
-					mainState <= "00010";
-				else
-					clockCounter <= clockCounter + 1;
-				end if;
+				thetaInState <= keccakInternalState;
+				mainState <= "00010";
 			WHEN "00010" =>
-				thetaHold <= '1';
+				--Part of the theta step.
 				SAVETHETAX: for x in 0 to 4 loop
 					SAVETHETAY: for y in 0 to 4 loop
 						keccakInternalState(y)(x) <= keccakInternalState(y)(x) xor thetaState(x);
 					end loop;
 				end loop;
-				rhoandpiHold <= '1';
+				clockCounter <= 0;
 				mainState <= "00011";
 			WHEN "00011" =>
-				thetaHold <= '0';
-				SAVERAPX: for x in 0 to 4 loop
-					SAVERAPY: for y in 0 to 4 loop
-					 -- A[x,y] = B[x,y] xor ((not B[x+1,y]) and B[x+2,y]), forall (x,y) in (0…4,0…4)
-						keccakInternalState(y)(x) <= rhoandpiOutState(y)(x) xor (not(rhoandpiOutState(y)((x + 1) mod 5)) and rhoandpiOutState(y)((x + 2) mod 5));
-					end loop;
-				end loop;
+				rhoandpiInState <= keccakInternalState;
+				mainState <= "00100";
 			WHEN "00100" =>
+				keccakInternalState <= chiOutState;
+				mainState <= "00101";
+			WHEN "00101" =>
+				--Iota step of the SHA3 algorithm
 				keccakInternalState(0)(0) <= keccakInternalState(0)(0) xor roundConstant;
 				roundCounter <= roundCounter + 1;
 				rhoandpiHold <= '0';
@@ -159,38 +159,20 @@ BEGIN
 		WHEN 19 => roundConstant <= X"000A";
 		WHEN 20 => roundConstant <= X"8081";
 		WHEN OTHERS=> roundConstant <= X"0000";
---		RC[0] = (Lane)0x0000000000000001;
---    RC[1] = (Lane)0x0000000000008082;
---    RC[2] = (Lane)0x800000000000808A;
---    RC[3] = (Lane)0x8000000080008000;
---    RC[4] = (Lane)0x000000000000808B;
---    RC[5] = (Lane)0x0000000080000001;
---    RC[6] = (Lane)0x8000000080008081;
---    RC[7] = (Lane)0x8000000000008009;
---    RC[8] = (Lane)0x000000000000008A;
---    RC[9] = (Lane)0x0000000000000088;
---    RC[10] = (Lane)0x0000000080008009;
---    RC[11] = (Lane)0x000000008000000A;
---    RC[12] = (Lane)0x000000008000808B;
---    RC[13] = (Lane)0x800000000000008B;
---    RC[14] = (Lane)0x8000000000008089;
---    RC[15] = (Lane)0x8000000000008003;
---    RC[16] = (Lane)0x8000000000008002;
---    RC[17] = (Lane)0x8000000000000080;
---    RC[18] = (Lane)0x000000000000800A;
---    RC[19] = (Lane)0x800000008000000A;
---    RC[20] = (Lane)0x8000000080008081;
---    RC[21] = (Lane)0x8000000000008080;
---    RC[22] = (Lane)0x0000000080000001;
---    RC[23] = (Lane)0x8000000080008008;
-
 	END CASE;
 END PROCESS;
+rhoandpiOutRow <= not rhoandpiOutState(0)(0);
 thetaHoldOut <= thetaHold;
 rhoandpiHoldOut <= rhoandpiHold;
-memOutOut <= keccakInternalState;
+memOutOut <= chiOutState;
 dataOutCount <= dataInCounter;
+--Memory block for passing in data one lane at a time
 MEM:shaMemory port map (readFromMem, clk, memOut,memInput, rowSelect, colSelect, reset);
-THETASTEP:theta port map(thetaHold, keccakInternalState, thetaState, clk);
-RHOANDPISTEP: rhoandpi port map(keccakInternalState, rhoandpiOutState, rhoandpiHold, clk);
+-- Perform the Theta step of the SHA-3 Algorithm
+THETASTEP:theta port map(thetaInState, thetaState);
+-- Perform the rho and pi step of the algorithm
+RHOANDPISTEP: rhoandpi port map(rhoandpiInState, rhoandpiOutState);
+-- Perform the chi step of the algorithm
+CHISTEP: chi port map(rhoandpiOutState, chiOutState);
+
 END shaArch;
