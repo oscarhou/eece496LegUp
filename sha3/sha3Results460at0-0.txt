@@ -1,0 +1,824 @@
+vsim  -c -do "vlib work; exit;" 
+Reading /home/oscarhou/altera/11.1/modelsim_ase/tcl/vsim/pref.tcl 
+
+# 10.0c
+
+# vlib work 
+#  exit 
+vlog -v ../../../tiger/processor/tiger_DE2/../altera_libs//altera_mf.v ../../../tiger/processor/tiger_DE2/../altera_libs//220model.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_adder.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_subtractor.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_multiplier.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_divider.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_adder64.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_subtractor64.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_multiplier64.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_divider64.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_compare32.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_compare64.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_truncate.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_extend.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_sitofp32.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_sitofp64.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_fptosi32.v ../../../tiger/processor/tiger_DE2/../altera_libs//altfp_fptosi64.v sha3.v
+Model Technology ModelSim ALTERA vlog 10.0c Compiler 2011.09 Sep 21 2011
+-- Compiling module LPM_MEMORY_INITIALIZATION
+-- Compiling module LPM_HINT_EVALUATION
+-- Compiling module LPM_DEVICE_FAMILIES
+-- Compiling module lpm_constant
+-- Compiling module lpm_inv
+-- Compiling module lpm_and
+-- Compiling module lpm_or
+-- Compiling module lpm_xor
+-- Compiling module lpm_bustri
+-- Compiling module lpm_mux
+-- Compiling module lpm_decode
+-- Compiling module lpm_clshift
+-- Compiling module lpm_add_sub
+-- Compiling module lpm_compare
+-- Compiling module lpm_mult
+-- Compiling module lpm_divide
+-- Compiling module lpm_abs
+-- Compiling module lpm_counter
+-- Compiling module lpm_latch
+-- Compiling module lpm_ff
+-- Compiling module lpm_shiftreg
+-- Compiling module lpm_ram_dq
+-- Compiling module lpm_ram_dp
+-- Compiling module lpm_ram_io
+-- Compiling module lpm_rom
+-- Compiling module lpm_fifo
+-- Compiling module lpm_fifo_dc_dffpipe
+-- Compiling module lpm_fifo_dc_fefifo
+-- Compiling module lpm_fifo_dc_async
+-- Compiling module lpm_fifo_dc
+-- Compiling module lpm_inpad
+-- Compiling module lpm_outpad
+-- Compiling module lpm_bipad
+-- Compiling module altfp_adder_altbarrel_shift_h0e
+-- Compiling module altfp_adder_altbarrel_shift_n3g
+-- Compiling module altfp_adder_altpriority_encoder_3e8
+-- Compiling module altfp_adder_altpriority_encoder_6e8
+-- Compiling module altfp_adder_altpriority_encoder_be8
+-- Compiling module altfp_adder_altpriority_encoder_3v7
+-- Compiling module altfp_adder_altpriority_encoder_6v7
+-- Compiling module altfp_adder_altpriority_encoder_bv7
+-- Compiling module altfp_adder_altpriority_encoder_uv8
+-- Compiling module altfp_adder_altpriority_encoder_ue9
+-- Compiling module altfp_adder_altpriority_encoder_ou8
+-- Compiling module altfp_adder_altpriority_encoder_nh8
+-- Compiling module altfp_adder_altpriority_encoder_qh8
+-- Compiling module altfp_adder_altpriority_encoder_vh8
+-- Compiling module altfp_adder_altpriority_encoder_ii9
+-- Compiling module altfp_adder_altpriority_encoder_n28
+-- Compiling module altfp_adder_altpriority_encoder_q28
+-- Compiling module altfp_adder_altpriority_encoder_v28
+-- Compiling module altfp_adder_altpriority_encoder_i39
+-- Compiling module altfp_adder_altpriority_encoder_cna
+-- Compiling module altfp_adder_altfp_add_sub_dmj
+-- Compiling module altfp_adder
+-- Compiling module altfp_subtractor_altbarrel_shift_h0e
+-- Compiling module altfp_subtractor_altbarrel_shift_n3g
+-- Compiling module altfp_subtractor_altpriority_encoder_3e8
+-- Compiling module altfp_subtractor_altpriority_encoder_6e8
+-- Compiling module altfp_subtractor_altpriority_encoder_be8
+-- Compiling module altfp_subtractor_altpriority_encoder_3v7
+-- Compiling module altfp_subtractor_altpriority_encoder_6v7
+-- Compiling module altfp_subtractor_altpriority_encoder_bv7
+-- Compiling module altfp_subtractor_altpriority_encoder_uv8
+-- Compiling module altfp_subtractor_altpriority_encoder_ue9
+-- Compiling module altfp_subtractor_altpriority_encoder_ou8
+-- Compiling module altfp_subtractor_altpriority_encoder_nh8
+-- Compiling module altfp_subtractor_altpriority_encoder_qh8
+-- Compiling module altfp_subtractor_altpriority_encoder_vh8
+-- Compiling module altfp_subtractor_altpriority_encoder_ii9
+-- Compiling module altfp_subtractor_altpriority_encoder_n28
+-- Compiling module altfp_subtractor_altpriority_encoder_q28
+-- Compiling module altfp_subtractor_altpriority_encoder_v28
+-- Compiling module altfp_subtractor_altpriority_encoder_i39
+-- Compiling module altfp_subtractor_altpriority_encoder_cna
+-- Compiling module altfp_subtractor_altfp_add_sub_enj
+-- Compiling module altfp_subtractor
+-- Compiling module altfp_multiplier_altfp_mult_4do
+-- Compiling module altfp_multiplier
+-- Compiling module altfp_divider_altfp_div_csa_gvc
+-- Compiling module altfp_divider_altfp_div_csa_72c
+-- Compiling module altfp_divider_altfp_div_csa_j0f
+-- Compiling module altfp_divider_altfp_div_csa_c3c
+-- Compiling module altfp_divider_altfp_div_csa_a2c
+-- Compiling module altfp_divider_altfp_div_csa_b3c
+-- Compiling module altfp_divider_qds_block_7o8
+-- Compiling module altfp_divider_srt_block_int_2fk
+-- Compiling module altfp_divider_qds_block_6a7
+-- Compiling module altfp_divider_srt_block_int_ahk
+-- Compiling module altfp_divider_srt_block_int_hbk
+-- Compiling module altfp_divider_altfp_div_srt_ext_73f
+-- Compiling module altfp_divider_altfp_div_kth
+-- Compiling module altfp_divider
+-- Compiling module altfp_adder64_altbarrel_shift_k0e
+-- Compiling module altfp_adder64_altbarrel_shift_q3g
+-- Compiling module altfp_adder64_altpriority_encoder_3e8
+-- Compiling module altfp_adder64_altpriority_encoder_6e8
+-- Compiling module altfp_adder64_altpriority_encoder_be8
+-- Compiling module altfp_adder64_altpriority_encoder_rf8
+-- Compiling module altfp_adder64_altpriority_encoder_3v7
+-- Compiling module altfp_adder64_altpriority_encoder_6v7
+-- Compiling module altfp_adder64_altpriority_encoder_bv7
+-- Compiling module altfp_adder64_altpriority_encoder_r08
+-- Compiling module altfp_adder64_altpriority_encoder_tv8
+-- Compiling module altfp_adder64_altpriority_encoder_te9
+-- Compiling module altfp_adder64_altpriority_encoder_uu8
+-- Compiling module altfp_adder64_altpriority_encoder_nh8
+-- Compiling module altfp_adder64_altpriority_encoder_qh8
+-- Compiling module altfp_adder64_altpriority_encoder_vh8
+-- Compiling module altfp_adder64_altpriority_encoder_fj8
+-- Compiling module altfp_adder64_altpriority_encoder_hi9
+-- Compiling module altfp_adder64_altpriority_encoder_n28
+-- Compiling module altfp_adder64_altpriority_encoder_q28
+-- Compiling module altfp_adder64_altpriority_encoder_v28
+-- Compiling module altfp_adder64_altpriority_encoder_f48
+-- Compiling module altfp_adder64_altpriority_encoder_h39
+-- Compiling module altfp_adder64_altpriority_encoder_ina
+-- Compiling module altfp_adder64_altfp_add_sub_pnj
+-- Compiling module altfp_adder64
+-- Compiling module altfp_subtractor64_altbarrel_shift_k0e
+-- Compiling module altfp_subtractor64_altbarrel_shift_q3g
+-- Compiling module altfp_subtractor64_altpriority_encoder_3e8
+-- Compiling module altfp_subtractor64_altpriority_encoder_6e8
+-- Compiling module altfp_subtractor64_altpriority_encoder_be8
+-- Compiling module altfp_subtractor64_altpriority_encoder_rf8
+-- Compiling module altfp_subtractor64_altpriority_encoder_3v7
+-- Compiling module altfp_subtractor64_altpriority_encoder_6v7
+-- Compiling module altfp_subtractor64_altpriority_encoder_bv7
+-- Compiling module altfp_subtractor64_altpriority_encoder_r08
+-- Compiling module altfp_subtractor64_altpriority_encoder_tv8
+-- Compiling module altfp_subtractor64_altpriority_encoder_te9
+-- Compiling module altfp_subtractor64_altpriority_encoder_uu8
+-- Compiling module altfp_subtractor64_altpriority_encoder_nh8
+-- Compiling module altfp_subtractor64_altpriority_encoder_qh8
+-- Compiling module altfp_subtractor64_altpriority_encoder_vh8
+-- Compiling module altfp_subtractor64_altpriority_encoder_fj8
+-- Compiling module altfp_subtractor64_altpriority_encoder_hi9
+-- Compiling module altfp_subtractor64_altpriority_encoder_n28
+-- Compiling module altfp_subtractor64_altpriority_encoder_q28
+-- Compiling module altfp_subtractor64_altpriority_encoder_v28
+-- Compiling module altfp_subtractor64_altpriority_encoder_f48
+-- Compiling module altfp_subtractor64_altpriority_encoder_h39
+-- Compiling module altfp_subtractor64_altpriority_encoder_ina
+-- Compiling module altfp_subtractor64_altfp_add_sub_qoj
+-- Compiling module altfp_subtractor64
+-- Compiling module altfp_multiplier64_altfp_mult_geo
+-- Compiling module altfp_multiplier64
+-- Compiling module altfp_divider64_altfp_div_csa_ivc
+-- Compiling module altfp_divider64_altfp_div_csa_92c
+-- Compiling module altfp_divider64_altfp_div_csa_k0f
+-- Compiling module altfp_divider64_altfp_div_csa_d3c
+-- Compiling module altfp_divider64_altfp_div_csa_c2c
+-- Compiling module altfp_divider64_qds_block_7o8
+-- Compiling module altfp_divider64_srt_block_int_8fk
+-- Compiling module altfp_divider64_qds_block_6a7
+-- Compiling module altfp_divider64_srt_block_int_ghk
+-- Compiling module altfp_divider64_srt_block_int_nbk
+-- Compiling module altfp_divider64_altfp_div_srt_ext_e3f
+-- Compiling module altfp_divider64_altfp_div_1vh
+-- Compiling module altfp_divider64
+-- Compiling module altfp_compare32_altfp_compare_lke
+-- Compiling module altfp_compare32
+-- Compiling module altfp_compare64_altfp_compare_1me
+-- Compiling module altfp_compare64
+-- Compiling module altfp_truncate_altfp_convert_bpn
+-- Compiling module altfp_truncate
+-- Compiling module altfp_extend_altfp_convert_bpn
+-- Compiling module altfp_extend
+-- Compiling module altfp_sitofp32_altbarrel_shift_brf
+-- Compiling module altfp_sitofp32_altpriority_encoder_3e8
+-- Compiling module altfp_sitofp32_altpriority_encoder_6e8
+-- Compiling module altfp_sitofp32_altpriority_encoder_be8
+-- Compiling module altfp_sitofp32_altpriority_encoder_rf8
+-- Compiling module altfp_sitofp32_altpriority_encoder_3v7
+-- Compiling module altfp_sitofp32_altpriority_encoder_6v7
+-- Compiling module altfp_sitofp32_altpriority_encoder_bv7
+-- Compiling module altfp_sitofp32_altpriority_encoder_r08
+-- Compiling module altfp_sitofp32_altpriority_encoder_qb6
+-- Compiling module altfp_sitofp32_altfp_convert_fhn
+-- Compiling module altfp_sitofp32
+-- Compiling module altfp_sitofp64_altbarrel_shift_brf
+-- Compiling module altfp_sitofp64_altpriority_encoder_3v7
+-- Compiling module altfp_sitofp64_altpriority_encoder_3e8
+-- Compiling module altfp_sitofp64_altpriority_encoder_6v7
+-- Compiling module altfp_sitofp64_altpriority_encoder_6e8
+-- Compiling module altfp_sitofp64_altpriority_encoder_bv7
+-- Compiling module altfp_sitofp64_altpriority_encoder_be8
+-- Compiling module altfp_sitofp64_altpriority_encoder_r08
+-- Compiling module altfp_sitofp64_altpriority_encoder_rf8
+-- Compiling module altfp_sitofp64_altpriority_encoder_qb6
+-- Compiling module altfp_sitofp64_altfp_convert_0jn
+-- Compiling module altfp_sitofp64
+-- Compiling module altfp_fptosi32_altbarrel_shift_grf
+-- Compiling module altfp_fptosi32_altfp_convert_fhn
+-- Compiling module altfp_fptosi32
+-- Compiling module altfp_fptosi64_altbarrel_shift_jrf
+-- Compiling module altfp_fptosi64_altfp_convert_0jn
+-- Compiling module altfp_fptosi64
+-- Compiling module top
+-- Compiling module memory_controller
+-- Compiling module main
+-- Compiling module ram_dual_port
+-- Compiling module de2
+-- Compiling module de4
+-- Compiling module hex_digits
+-- Compiling module main_tb
+-- Scanning library file '../../../tiger/processor/tiger_DE2/../altera_libs//altera_mf.v'
+-- Compiling module altsyncram
+-- Scanning library file '../../../tiger/processor/tiger_DE2/../altera_libs//altera_mf.v'
+-- Compiling module ALTERA_MF_MEMORY_INITIALIZATION
+-- Compiling module ALTERA_DEVICE_FAMILIES
+
+Top level modules:
+	lpm_constant
+	lpm_inv
+	lpm_and
+	lpm_or
+	lpm_xor
+	lpm_bustri
+	lpm_decode
+	lpm_clshift
+	lpm_abs
+	lpm_counter
+	lpm_latch
+	lpm_ff
+	lpm_shiftreg
+	lpm_ram_dq
+	lpm_ram_dp
+	lpm_ram_io
+	lpm_rom
+	lpm_fifo
+	lpm_fifo_dc
+	lpm_inpad
+	lpm_outpad
+	lpm_bipad
+	altfp_adder
+	altfp_subtractor
+	altfp_multiplier
+	altfp_divider
+	altfp_adder64
+	altfp_subtractor64
+	altfp_multiplier64
+	altfp_divider64
+	altfp_compare32
+	altfp_compare64
+	altfp_truncate
+	altfp_extend
+	altfp_sitofp32
+	altfp_sitofp64
+	altfp_fptosi32
+	altfp_fptosi64
+	de4
+	main_tb
+vsim  -c -do "run 7000000000000000ns; exit;" work.main_tb
+Reading /home/oscarhou/altera/11.1/modelsim_ase/tcl/vsim/pref.tcl 
+
+# 10.0c
+
+# vsim -do {run 7000000000000000ns; exit;} -c work.main_tb 
+# Loading work.main_tb
+# Loading work.top
+# Loading work.memory_controller
+# Loading work.ram_dual_port
+# Loading work.altsyncram
+# Loading work.ALTERA_DEVICE_FAMILIES
+# Loading work.ALTERA_MF_MEMORY_INITIALIZATION
+# Loading work.main
+# Loading work.lpm_divide
+# Loading work.LPM_HINT_EVALUATION
+# run 7000000000000000ns 
+# Cycle:                   66 Time:                 1370    ---------------Round          0--------------
+# Cycle:                  101 Time:                 2070    C Value  After theta :       460,          0,      32768,          0,          0
+# Cycle:                  296 Time:                 5970    D Value:          0,        461,          0,      32768,        920
+# Cycle:                  419 Time:                 8430    State After Theta Step: 
+# Cycle:                  424 Time:                 8530    1st Row:        460,        461,          0,      32768,        920
+# Cycle:                  429 Time:                 8630    2st Row:          0,        461,      32768,      32768,        920
+# Cycle:                  434 Time:                 8730    3st Row:          0,        461,          0,      32768,        920
+# Cycle:                  439 Time:                 8830    4st Row:          0,        461,          0,      32768,        920
+# Cycle:                  444 Time:                 8930    5st Row:          0,        461,          0,      32768,        920
+# Cycle:                 1380 Time:                27650    Temporary State (B) after Rho and Pi:
+# Cycle:                 1385 Time:                27750    1st Row:        460,      53276,          0,         16,        230
+# Cycle:                 1390 Time:                27850    2st Row:       2048,      14720,          0,      41017,          0
+# Cycle:                 1395 Time:                27950    3st Row:        922,         32,        256,      38915,          0
+# Cycle:                 1400 Time:                28050    4st Row:      49180,          0,      13319,          0,        128
+# Cycle:                 1405 Time:                28150    5st Row:          0,         64,      52225,          0,       1844
+# Cycle:                 1706 Time:                34170    State after Chi step:
+# Cycle:                 1711 Time:                34270    1st Row:        460,      53260,        230,        280,      53494
+# Cycle:                 1716 Time:                34370    2st Row:       2048,      39353,          0,      43065,      12672
+# Cycle:                 1721 Time:                34470    3st Row:        666,      38947,        256,      39833,         32
+# Cycle:                 1726 Time:                34570    4st Row:      62491,          0,      13447,      49180,        128
+# Cycle:                 1731 Time:                34670    5st Row:      52225,         64,      52021,          0,       1908
+# Cycle:                 1735 Time:                34750    Final state of round : 
+# Cycle:                 1740 Time:                34850    1st Row:        461,      53260,        230,        280,      53494
+# Cycle:                 1745 Time:                34950    2st Row:       2048,      39353,          0,      43065,      12672
+# Cycle:                 1750 Time:                35050    3st Row:        666,      38947,        256,      39833,         32
+# Cycle:                 1755 Time:                35150    4st Row:      62491,          0,      13447,      49180,        128
+# Cycle:                 1760 Time:                35250    5st Row:      52225,         64,      52021,          0,       1908
+# Cycle:                 1761 Time:                35270    ---------------Round          1--------------
+# Cycle:                 1796 Time:                35970    C Value  After theta :     13133,      53718,      65108,      62116,      59042
+# Cycle:                 1991 Time:                39870    D Value:      17679,      53220,      13471,      13073,      37950
+# Cycle:                 2114 Time:                42330    State After Theta Step: 
+# Cycle:                 2119 Time:                42430    1st Row:      17602,       8168,      13433,      12809,      17608
+# Cycle:                 2124 Time:                42530    2st Row:      19727,      22109,      13471,      39720,      42430
+# Cycle:                 2129 Time:                42630    3st Row:      18325,      22471,      13727,      43144,      37918
+# Cycle:                 2134 Time:                42730    4st Row:      45332,      53220,         24,      62221,      38078
+# Cycle:                 2139 Time:                42830    5st Row:      35086,      53156,      65450,      13073,      37706
+# Cycle:                 3075 Time:                61550    Temporary State (B) after Rho and Pi:
+# Cycle:                 3080 Time:                61650    1st Row:      17602,      54629,      63916,      25022,      42194
+# Cycle:                 3085 Time:                61750    2st Row:      37664,      23530,      15530,      39420,      24565
+# Cycle:                 3090 Time:                61850    3st Row:      16336,      10189,       4433,      48788,       9274
+# Cycle:                 3095 Time:                61950    4st Row:      16934,      53492,       7519,         12,       4403
+# Cycle:                 3100 Time:                62050    5st Row:      19742,      37965,       3914,      10594,      16019
+# Cycle:                 3401 Time:                68070    State after Chi step:
+# Cycle:                 3406 Time:                68170    1st Row:      27722,      54647,      32236,       8638,      13815
+# Cycle:                 3411 Time:                68270    2st Row:      46880,      55998,      31403,       6652,       5951
+# Cycle:                 3416 Time:                68370    3st Row:      12224,      35145,       4475,      42324,       9271
+# Cycle:                 3421 Time:                68470    4st Row:      20269,      53492,       3180,      16904,      33251
+# Cycle:                 3426 Time:                68570    5st Row:      17948,      46189,       6619,      26734,      44754
+# Cycle:                 3430 Time:                68650    Final state of round : 
+# Cycle:                 3435 Time:                68750    1st Row:      60616,      54647,      32236,       8638,      13815
+# Cycle:                 3440 Time:                68850    2st Row:      46880,      55998,      31403,       6652,       5951
+# Cycle:                 3445 Time:                68950    3st Row:      12224,      35145,       4475,      42324,       9271
+# Cycle:                 3450 Time:                69050    4st Row:      20269,      53492,       3180,      16904,      33251
+# Cycle:                 3455 Time:                69150    5st Row:      17948,      46189,       6619,      26734,      44754
+# Cycle:                 3456 Time:                69170    ---------------Round          2--------------
+# Cycle:                 3491 Time:                69870    C Value  After theta :     32025,      57881,        907,      46960,      10702
+# Cycle:                 3686 Time:                73770    D Value:      60925,      31247,      36088,      20503,      19778
+# Cycle:                 3809 Time:                76230    State After Theta Step: 
+# Cycle:                 3814 Time:                76330    1st Row:        309,      44920,      61716,      29097,      30901
+# Cycle:                 3819 Time:                76430    2st Row:      23261,      41137,      63059,      18923,      23165
+# Cycle:                 3824 Time:                76530    3st Row:      49725,      62278,      40323,      62787,      26997
+# Cycle:                 3829 Time:                76630    4st Row:      41680,      43771,      32916,       4639,      52385
+# Cycle:                 3834 Time:                76730    5st Row:      44001,      52834,      38179,      14457,      58256
+# Cycle:                 4770 Time:                95450    Temporary State (B) after Rho and Pi:
+# Cycle:                 4775 Time:                95550    1st Row:        309,       6667,       7404,      17378,      14564
+# Cycle:                 4780 Time:                95650    2st Row:      38682,      42965,       4590,      30047,      29348
+# Cycle:                 4785 Time:                95750    3st Row:      24305,      38141,      34794,      41420,      44934
+# Cycle:                 4790 Time:                95850    4st Row:      43973,      44501,       7117,      16458,      31032
+# Cycle:                 4795 Time:                95950    5st Row:      15429,      62884,      47796,      41285,      14731
+# Cycle:                 5096 Time:               101970    State after Chi step:
+# Cycle:                 5101 Time:               102070    1st Row:       1489,      22793,       9448,      17139,       8942
+# Cycle:                 5106 Time:               102170    2st Row:      34608,      50116,       4942,      61509,      21089
+# Cycle:                 5111 Time:               102270    3st Row:      24051,      46329,      35304,      61885,      12170
+# Cycle:                 5116 Time:               102370    4st Row:      47565,      60887,       8957,      49807,      32040
+# Cycle:                 5121 Time:               102470    5st Row:      13909,      62693,      41534,      42241,      63531
+# Cycle:                 5125 Time:               102550    Final state of round : 
+# Cycle:                 5130 Time:               102650    1st Row:      34139,      22793,       9448,      17139,       8942
+# Cycle:                 5135 Time:               102750    2st Row:      34608,      50116,       4942,      61509,      21089
+# Cycle:                 5140 Time:               102850    3st Row:      24051,      46329,      35304,      61885,      12170
+# Cycle:                 5145 Time:               102950    4st Row:      47565,      60887,       8957,      49807,      32040
+# Cycle:                 5150 Time:               103050    5st Row:      13909,      62693,      41534,      42241,      63531
+# Cycle:                 5151 Time:               103070    ---------------Round          3--------------
+# Cycle:                 5186 Time:               103770    C Value  After theta :     53248,      14086,      16013,       9349,      55814
+# Cycle:                 5381 Time:               107670    D Value:      46090,      44314,      32268,      35456,      33924
+# Cycle:                 5504 Time:               110130    State After Theta Step: 
+# Cycle:                 5509 Time:               110230    1st Row:      12625,      62483,      23268,      51315,      42602
+# Cycle:                 5514 Time:               110330    2st Row:      13114,      28382,      27970,      31429,      55013
+# Cycle:                 5519 Time:               110430    3st Row:      59897,       6627,      63460,      31549,      43790
+# Cycle:                 5524 Time:               110530    4st Row:       3527,      16589,      23793,      18447,      63916
+# Cycle:                 5529 Time:               110630    5st Row:      33375,      23039,      56370,      12161,      31919
+# Cycle:                 6465 Time:               129350    Temporary State (B) after Rho and Pi:
+# Cycle:                 6470 Time:               129450    1st Row:      12625,      59117,      10175,        489,      57131
+# Cycle:                 6475 Time:               129550    2st Row:      15495,      28253,      20431,      43033,      23430
+# Cycle:                 6480 Time:               129650    3st Row:      59431,      20635,      31478,      44281,       2430
+# Cycle:                 6485 Time:               129750    4st Row:      21811,      13219,      35943,      44664,      33071
+# Cycle:                 6490 Time:               129850    5st Row:       5817,      25277,      34645,      36379,      26621
+# Cycle:                 6791 Time:               135870    State after Chi step:
+# Cycle:                 6796 Time:               135970    1st Row:      12355,      59053,      63933,       8633,       6535
+# Cycle:                 6801 Time:               136070    2st Row:      15621,      52813,       7241,      35864,       6622
+# Cycle:                 6806 Time:               136170    3st Row:      49731,      54418,      31728,      19704,       6630
+# Cycle:                 6811 Time:               136270    4st Row:      55671,       4539,      36192,      64104,      41903
+# Cycle:                 6816 Time:               136370    5st Row:      37881,      27319,      59057,      40475,       2041
+# Cycle:                 6820 Time:               136450    Final state of round : 
+# Cycle:                 6825 Time:               136550    1st Row:      45123,      59053,      63933,       8633,       6535
+# Cycle:                 6830 Time:               136650    2st Row:      15621,      52813,       7241,      35864,       6622
+# Cycle:                 6835 Time:               136750    3st Row:      49731,      54418,      31728,      19704,       6630
+# Cycle:                 6840 Time:               136850    4st Row:      55671,       4539,      36192,      64104,      41903
+# Cycle:                 6845 Time:               136950    5st Row:      37881,      27319,      59057,      40475,       2041
+# Cycle:                 6846 Time:               136970    ---------------Round          4--------------
+# Cycle:                 6881 Time:               137670    C Value  After theta :      1419,      34686,      62933,      34090,      48617
+# Cycle:                 7076 Time:               141570    D Value:      45844,      60960,      36139,      36358,      36412
+# Cycle:                 7199 Time:               144030    State After Theta Step: 
+# Cycle:                 7204 Time:               144130    1st Row:        855,       2189,      29846,      44991,      38843
+# Cycle:                 7209 Time:               144230    2st Row:      36369,       8301,      37218,        542,      38882
+# Cycle:                 7214 Time:               144330    3st Row:      29015,      15026,      63195,      49918,      38874
+# Cycle:                 7219 Time:               144430    4st Row:      27235,      65435,         75,      29806,      11667
+# Cycle:                 7224 Time:               144530    5st Row:       8429,      33943,      27546,       4125,      35269
+# Cycle:                 8160 Time:               163250    Temporary State (B) after Rho and Pi:
+# Cycle:                 8165 Time:               163350    1st Row:        855,      53766,      57270,      36302,      25201
+# Cycle:                 8170 Time:               163450    2st Row:      64251,      32297,      35515,      32755,      19827
+# Cycle:                 8175 Time:               163550    3st Row:       4378,      22692,      64901,      37677,      33716
+# Cycle:                 8180 Time:               163650    4st Row:      56509,      57624,      51434,      32805,       7440
+# Cycle:                 8185 Time:               163750    5st Row:      40229,       3841,      60747,      50900,       4702
+# Cycle:                 8486 Time:               169770    State after Chi step:
+# Cycle:                 8491 Time:               169870    1st Row:       3815,      53838,      48519,      36040,      45681
+# Cycle:                 8496 Time:               169970    2st Row:      31337,       2921,      35515,      52603,      18803
+# Cycle:                 8501 Time:               170070    3st Row:      46107,      23180,      64789,      33575,      51984
+# Cycle:                 8506 Time:               170170    4st Row:      54367,      57629,      54778,      16520,      15376
+# Cycle:                 8511 Time:               170270    5st Row:      32111,       3477,      64833,      19445,       4190
+# Cycle:                 8515 Time:               170350    Final state of round : 
+# Cycle:                 8520 Time:               170450    1st Row:      36460,      53838,      48519,      36040,      45681
+# Cycle:                 8525 Time:               170550    2st Row:      31337,       2921,      35515,      52603,      18803
+# Cycle:                 8530 Time:               170650    3st Row:      46107,      23180,      64789,      33575,      51984
+# Cycle:                 8535 Time:               170750    4st Row:      54367,      57629,      54778,      16520,      15376
+# Cycle:                 8540 Time:               170850    5st Row:      32111,       3477,      64833,      19445,       4190
+# Cycle:                 8541 Time:               170870    ---------------Round          5--------------
+# Cycle:                 8576 Time:               171570    C Value  After theta :     59694,      28451,      58002,      51689,       7260
+# Cycle:                 8771 Time:               175470    D Value:      49690,      11275,      64752,      55850,       7092
+# Cycle:                 8894 Time:               177930    State After Theta Step: 
+# Cycle:                 8899 Time:               178030    1st Row:      19574,      65093,      16759,      22242,      43461
+# Cycle:                 8904 Time:               178130    2st Row:      47219,      10082,      30283,       5969,      21191
+# Cycle:                 8909 Time:               178230    3st Row:      30209,      30343,        485,      22797,      53412
+# Cycle:                 8914 Time:               178330    4st Row:       5701,      52502,      10506,      39586,      10148
+# Cycle:                 8919 Time:               178430    5st Row:      49013,       8606,        433,      37343,       3050
+# Cycle:                 9855 Time:               197150    Temporary State (B) after Rho and Pi:
+# Cycle:                 9860 Time:               197250    1st Row:      19574,       8822,      10255,      21587,      33530
+# Cycle:                 9865 Time:               197350    2st Row:       9582,      11381,      45067,      55714,       8246
+# Cycle:                 9870 Time:               197450    3st Row:      64651,      37597,       6834,      42023,      64982
+# Cycle:                 9875 Time:               197550    4st Row:      11598,      34619,       7642,       5253,      57233
+# Cycle:                 9880 Time:               197650    5st Row:      53341,      43147,      21096,      35372,      34424
+# Cycle:                10181 Time:               203670    State after Chi step:
+# Cycle:                10186 Time:               203770    1st Row:      17535,      30246,      43687,       6231,      41210
+# Cycle:                10191 Time:               203870    2st Row:      46436,      26069,      36895,      56554,      10279
+# Cycle:                10196 Time:               203970    3st Row:      62633,      14040,      17250,      42030,      65410
+# Cycle:                10201 Time:               204070    4st Row:      13710,      34622,      54986,      13515,      23968
+# Cycle:                10206 Time:               204170    5st Row:      33341,       8335,      22072,      55849,      44794
+# Cycle:                10210 Time:               204250    Final state of round : 
+# Cycle:                10215 Time:               204350    1st Row:      17534,      30246,      43687,       6231,      41210
+# Cycle:                10220 Time:               204450    2st Row:      46436,      26069,      36895,      56554,      10279
+# Cycle:                10225 Time:               204550    3st Row:      62633,      14040,      17250,      42030,      65410
+# Cycle:                10230 Time:               204650    4st Row:      13710,      34622,      54986,      13515,      23968
+# Cycle:                10235 Time:               204750    5st Row:      33341,       8335,      22072,      55849,      44794
+# Cycle:                10236 Time:               204770    ---------------Round          6--------------
+# Cycle:                10271 Time:               205470    C Value  After theta :     45568,      33434,      63784,      36465,      33797
+# Cycle:                10466 Time:               209370    D Value:      33072,      16465,      40569,      61731,      60016
+# Cycle:                10589 Time:               211830    State After Theta Step: 
+# Cycle:                10594 Time:               211930    1st Row:      50510,      13943,      13534,      59764,      19082
+# Cycle:                10599 Time:               212030    2st Row:      13396,       9604,       3686,      11721,      49751
+# Cycle:                10604 Time:               212130    3st Row:      30105,      30345,      56603,      21773,       5618
+# Cycle:                10609 Time:               212230    4st Row:      46270,      51055,      18611,      50664,      47056
+# Cycle:                10614 Time:               212330    5st Row:        781,      24798,      51265,      11018,      17546
+# Cycle:                11550 Time:               231050    Temporary State (B) after Rho and Pi:
+# Cycle:                11555 Time:               231150    1st Row:      50510,      16984,      57064,      48408,      37154
+# Cycle:                11560 Time:               231250    2st Row:      20119,       9596,      44235,      63725,      14600
+# Cycle:                11565 Time:               231350    3st Row:      27886,      39299,       6826,      53431,       3124
+# Cycle:                11570 Time:               231450    4st Row:      21076,      17731,       9690,      42073,       2603
+# Cycle:                11575 Time:               231550    5st Row:      36151,      58518,      63754,      32105,      33657
+# Cycle:                11876 Time:               237570    State after Chi step:
+# Cycle:                11881 Time:               237670    1st Row:      23022,      25416,      57034,      63828,      37682
+# Cycle:                11886 Time:               237770    2st Row:      50708,      30040,      44491,      48762,       6240
+# Cycle:                11891 Time:               237870    3st Row:      28358,      22934,       5802,      45181,      40245
+# Cycle:                11896 Time:               237970    4st Row:      29388,      50498,      12280,      62477,       3880
+# Cycle:                11901 Time:               238070    5st Row:      37951,      57591,      31514,      29039,      58361
+# Cycle:                11905 Time:               238150    Final state of round : 
+# Cycle:                11910 Time:               238250    1st Row:      55663,      25416,      57034,      63828,      37682
+# Cycle:                11915 Time:               238350    2st Row:      50708,      30040,      44491,      48762,       6240
+# Cycle:                11920 Time:               238450    3st Row:      28358,      22934,       5802,      45181,      40245
+# Cycle:                11925 Time:               238550    4st Row:      29388,      50498,      12280,      62477,       3880
+# Cycle:                11930 Time:               238650    5st Row:      37951,      57591,      31514,      29039,      58361
+# Cycle:                11931 Time:               238670    ---------------Round          7--------------
+# Cycle:                11966 Time:               239370    C Value  After theta :     38734,      27187,      12617,      29233,      64182
+# Cycle:                12161 Time:               243270    D Value:      11984,      62940,      36433,      50212,      23724
+# Cycle:                12284 Time:               245730    State After Theta Step: 
+# Cycle:                12289 Time:               245830    1st Row:      63423,      38548,      20635,      15728,      53150
+# Cycle:                12294 Time:               245930    2st Row:      59588,      32900,       9114,      31326,      17612
+# Cycle:                12299 Time:               246030    3st Row:      16406,      44106,      39163,      29785,      49561
+# Cycle:                12304 Time:               246130    4st Row:      23580,      12446,      41385,      12329,      21380
+# Cycle:                12309 Time:               246230    5st Row:      47855,       5419,      62795,      46411,      48981
+# Cycle:                13245 Time:               264950    Temporary State (B) after Rho and Pi:
+# Cycle:                13250 Time:               265050    1st Row:      63423,      18440,      56519,       1318,      28629
+# Cycle:                13255 Time:               265150    2st Row:        983,      19652,        178,      50707,      32425
+# Cycle:                13260 Time:               265250    3st Row:      11561,      59016,      45800,      33875,      60350
+# Cycle:                13265 Time:               265350    4st Row:      63100,      35918,      10929,      53460,      19381
+# Cycle:                13270 Time:               265450    5st Row:      54310,      12093,      52448,      14520,      21676
+# Cycle:                13571 Time:               271470    State after Chi step:
+# Cycle:                13576 Time:               271570    1st Row:      25464,      18728,      46614,      38156,      26581
+# Cycle:                13581 Time:               271670    2st Row:        997,      35525,      14362,      51013,      12969
+# Cycle:                13586 Time:               271770    3st Row:      15689,      58011,      55620,      32850,      10558
+# Cycle:                13591 Time:               271870    4st Row:      54477,      23562,       8592,      25756,      17335
+# Cycle:                13596 Time:               271970    5st Row:       5350,       7973,      35044,      47290,      32693
+# Cycle:                13600 Time:               272050    Final state of round : 
+# Cycle:                13605 Time:               272150    1st Row:      58225,      18728,      46614,      38156,      26581
+# Cycle:                13610 Time:               272250    2st Row:        997,      35525,      14362,      51013,      12969
+# Cycle:                13615 Time:               272350    3st Row:      15689,      58011,      55620,      32850,      10558
+# Cycle:                13620 Time:               272450    4st Row:      54477,      23562,       8592,      25756,      17335
+# Cycle:                13625 Time:               272550    5st Row:       5350,       7973,      35044,      47290,      32693
+# Cycle:                13626 Time:               272570    ---------------Round          8--------------
+# Cycle:                13661 Time:               273270    C Value  After theta :      7670,      25177,      65084,       3645,      16448
+# Cycle:                13856 Time:               277170    D Value:      34034,      57743,      32291,      32444,      13777
+# Cycle:                13979 Time:               279630    State After Theta Step: 
+# Cycle:                13984 Time:               279730    1st Row:      26499,      43175,      51253,      60336,      20996
+# Cycle:                13989 Time:               279830    2st Row:      34583,      27466,      17977,      47609,       1912
+# Cycle:                13994 Time:               279930    3st Row:      47547,        788,      42855,      65262,       7407
+# Cycle:                13999 Time:               280030    4st Row:      20543,      48517,      24499,       6688,      30310
+# Cycle:                14004 Time:               280130    5st Row:      36884,      65194,      63175,      50694,      19044
+# Cycle:                14940 Time:               298850    Temporary State (B) after Rho and Pi:
+# Cycle:                14945 Time:               298950    1st Row:      26499,      42676,      15675,      17411,       4761
+# Cycle:                14950 Time:               299050    2st Row:       3771,      30592,      52701,      47024,      65240
+# Cycle:                14955 Time:               299150    3st Row:      20815,      36433,      56829,      26230,      16466
+# Cycle:                14960 Time:               299250    4st Row:       8848,      29048,      20492,      45017,       1734
+# Cycle:                14965 Time:               299350    5st Row:      29197,      64732,      30606,      32416,      64171
+# Cycle:                15266 Time:               305370    State after Chi step:
+# Cycle:                15271 Time:               305470    1st Row:      32392,      59060,      12195,       8449,      37549
+# Cycle:                15276 Time:               305570    2st Row:      34534,      17824,      34197,      46995,      36824
+# Cycle:                15281 Time:               305670    3st Row:        227,      44115,      56829,      30587,      52802
+# Cycle:                15286 Time:               305770    4st Row:       8852,      57001,      20490,      36809,      22446
+# Cycle:                15291 Time:               305870    5st Row:      28943,      62716,      63365,      32420,      30331
+# Cycle:                15295 Time:               305950    Final state of round : 
+# Cycle:                15300 Time:               306050    1st Row:      32258,      59060,      12195,       8449,      37549
+# Cycle:                15305 Time:               306150    2st Row:      34534,      17824,      34197,      46995,      36824
+# Cycle:                15310 Time:               306250    3st Row:        227,      44115,      56829,      30587,      52802
+# Cycle:                15315 Time:               306350    4st Row:       8852,      57001,      20490,      36809,      22446
+# Cycle:                15320 Time:               306450    5st Row:      28943,      62716,      63365,      32420,      30331
+# Cycle:                15321 Time:               306470    ---------------Round          9--------------
+# Cycle:                15356 Time:               307170    C Value  After theta :     43932,       9490,      53316,       4228,      62178
+# Cycle:                15551 Time:               311070    D Value:      47302,       2837,       1050,      13697,      18365
+# Cycle:                15674 Time:               313530    State After Theta Step: 
+# Cycle:                15679 Time:               313630    1st Row:      50884,      60833,      11193,       5248,      54544
+# Cycle:                15684 Time:               313730    2st Row:      15904,      20149,      33167,      33298,      51301
+# Cycle:                15689 Time:               313830    3st Row:      47141,      42822,      55783,      17146,      35327
+# Cycle:                15694 Time:               313930    4st Row:      39506,      54716,      21520,      47688,       4115
+# Cycle:                15699 Time:               314030    5st Row:      51657,      65513,      62367,      19237,      12742
+# Cycle:                16635 Time:               332750    Temporary State (B) after Rho and Pi:
+# Cycle:                16640 Time:               332850    1st Row:      50884,      21739,      16079,      18711,      35953
+# Cycle:                16645 Time:               332950    2st Row:        328,      34396,      49453,      39607,      65139
+# Cycle:                16650 Time:               333050    3st Row:      56131,      25568,      62597,       4880,      10023
+# Cycle:                16655 Time:               333150    4st Row:      34472,      57859,       6813,      10760,       9547
+# Cycle:                16660 Time:               333250    5st Row:      19182,       2369,      65476,      42292,      65447
+# Cycle:                16961 Time:               339270    State after Chi step:
+# Cycle:                16966 Time:               339370    1st Row:      60608,       5627,      47791,       2963,      40026
+# Cycle:                16971 Time:               339470    2st Row:      16489,      40142,      42349,      39871,      30823
+# Cycle:                16976 Time:               339570    3st Row:      20294,      24816,      53410,      52048,       1927
+# Cycle:                16981 Time:               339670    4st Row:      40500,      49667,       8158,      43176,      17736
+# Cycle:                16986 Time:               339770    5st Row:      48234,       2417,      42311,      42364,      65190
+# Cycle:                16990 Time:               339850    Final state of round : 
+# Cycle:                16995 Time:               339950    1st Row:      60488,       5627,      47791,       2963,      40026
+# Cycle:                17000 Time:               340050    2st Row:      16489,      40142,      42349,      39871,      30823
+# Cycle:                17005 Time:               340150    3st Row:      20294,      24816,      53410,      52048,       1927
+# Cycle:                17010 Time:               340250    4st Row:      40500,      49667,       8158,      43176,      17736
+# Cycle:                17015 Time:               340350    5st Row:      48234,       2417,      42311,      42364,      65190
+# Cycle:                17016 Time:               340370    ---------------Round         10--------------
+# Cycle:                17051 Time:               341070    C Value  After theta :     49465,       8887,      30201,      22184,      22612
+# Cycle:                17246 Time:               344970    D Value:       7482,      10955,      36839,      50513,      54491
+# Cycle:                17369 Time:               347430    State After Theta Step: 
+# Cycle:                17374 Time:               347530    1st Row:      61810,      16176,      13640,      52930,      18561
+# Cycle:                17379 Time:               347630    2st Row:      23891,      46597,      10890,      24302,      44220
+# Cycle:                17384 Time:               347730    3st Row:      21116,      19003,      24389,       3585,      54108
+# Cycle:                17389 Time:               347830    4st Row:      33550,      59592,      36921,      28153,      37267
+# Cycle:                17394 Time:               347930    5st Row:      41296,       9146,      10912,      24621,      10877
+# Cycle:                18330 Time:               366650    Temporary State (B) after Rho and Pi:
+# Cycle:                18335 Time:               366750    1st Row:      61810,      23392,      11002,      48941,      19103
+# Cycle:                18340 Time:               366850    2st Row:      11500,      52170,      37858,       7449,       1364
+# Cycle:                18345 Time:               366950    3st Row:      32352,      41610,        540,      37777,      34114
+# Cycle:                18350 Time:               367050    4st Row:       2628,      54581,      60712,      51228,      11616
+# Cycle:                18355 Time:               367150    5st Row:       3410,      30511,      44649,       7430,      36584
+# Cycle:                18656 Time:               373170    State after Chi step:
+# Cycle:                18661 Time:               373270    1st Row:      53736,      52837,      27240,       3661,      16543
+# Cycle:                18666 Time:               373370    2st Row:      15564,      51155,      37798,      13745,      50774
+# Cycle:                18671 Time:               373470    3st Row:      32372,      13067,       1630,      59825,       1480
+# Cycle:                18676 Time:               373570    4st Row:       8780,      54561,      51272,      51736,      63569
+# Cycle:                18681 Time:               373670    5st Row:      34066,      26153,      11393,       7188,      64709
+# Cycle:                18685 Time:               373750    Final state of round : 
+# Cycle:                18690 Time:               373850    1st Row:      20961,      52837,      27240,       3661,      16543
+# Cycle:                18695 Time:               373950    2st Row:      15564,      51155,      37798,      13745,      50774
+# Cycle:                18700 Time:               374050    3st Row:      32372,      13067,       1630,      59825,       1480
+# Cycle:                18705 Time:               374150    4st Row:       8780,      54561,      51272,      51736,      63569
+# Cycle:                18710 Time:               374250    5st Row:      34066,      26153,      11393,       7188,      64709
+# Cycle:                18711 Time:               374270    ---------------Round         11--------------
+# Cycle:                18746 Time:               374970    C Value  After theta :     46087,      35253,       7001,       1089,      34709
+# Cycle:                18941 Time:               378870    D Value:      38142,      33461,      33079,       5234,      27726
+# Cycle:                19064 Time:               381330    State After Theta Step: 
+# Cycle:                19069 Time:               381430    1st Row:      50463,      19664,      60255,       6719,      11473
+# Cycle:                19074 Time:               381530    2st Row:      43058,      17766,       4753,       8643,      43544
+# Cycle:                19079 Time:               381630    3st Row:      60042,      45502,      34665,      64963,      27014
+# Cycle:                19084 Time:               381730    4st Row:      46770,      22420,      18815,      56938,      37919
+# Cycle:                19089 Time:               381830    5st Row:       4588,      58524,      44470,       2150,      37003
+# Cycle:                20025 Time:               400550    Temporary State (B) after Rho and Pi:
+# Cycle:                20030 Time:               400650    1st Row:      50463,      25686,      19515,      52571,      58402
+# Cycle:                20035 Time:               400750    2st Row:      61859,      41354,      21591,      35570,      54710
+# Cycle:                20040 Time:               400850    3st Row:      39328,      42052,      34811,       8084,      18352
+# Cycle:                20045 Time:               400950    4st Row:      35174,      33578,      64198,      42175,      26120
+# Cycle:                20050 Time:               401050    5st Row:      64215,      57744,      49972,      25965,      37491
+# Cycle:                20351 Time:               407070    State after Chi step:
+# Cycle:                20356 Time:               407170    1st Row:      52534,      58646,      27675,      52294,      50274
+# Cycle:                20361 Time:               407270    2st Row:      42486,      11050,        339,      43763,      54718
+# Cycle:                20366 Time:               407370    3st Row:      39451,      48192,      51163,      34708,      25588
+# Cycle:                20371 Time:               407470    4st Row:      61858,      34579,      47302,      11737,      25600
+# Cycle:                20376 Time:               407570    5st Row:      63731,      50649,      20774,       3561,      37747
+# Cycle:                20380 Time:               407650    Final state of round : 
+# Cycle:                20385 Time:               407750    1st Row:      52540,      58646,      27675,      52294,      50274
+# Cycle:                20390 Time:               407850    2st Row:      42486,      11050,        339,      43763,      54718
+# Cycle:                20395 Time:               407950    3st Row:      39451,      48192,      51163,      34708,      25588
+# Cycle:                20400 Time:               408050    4st Row:      61858,      34579,      47302,      11737,      25600
+# Cycle:                20405 Time:               408150    5st Row:      63731,      50649,      20774,       3561,      37747
+# Cycle:                20406 Time:               408170    ---------------Round         12--------------
+# Cycle:                20441 Time:               408870    C Value  After theta :     64384,      12470,      17267,      49425,      34139
+# Cycle:                20636 Time:               412770    D Value:      58423,      32102,      45717,      18884,      13840
+# Cycle:                20759 Time:               415230    State After Theta Step: 
+# Cycle:                20764 Time:               415330    1st Row:      10507,      39024,      56974,      34178,      62066
+# Cycle:                20769 Time:               415430    2st Row:      16833,      22092,      46022,      58167,      58286
+# Cycle:                20774 Time:               415530    3st Row:      32300,      49446,      30030,      52816,      21988
+# Cycle:                20779 Time:               415630    4st Row:       5525,      64117,       2643,      25629,      21008
+# Cycle:                20784 Time:               415730    5st Row:       7364,      47295,      58291,      17453,      42339
+# Cycle:                21720 Time:               434450    Temporary State (B) after Rho and Pi:
+# Cycle:                21725 Time:               434550    1st Row:      10507,      50532,      29610,      33708,      59736
+# Cycle:                21730 Time:               434650    2st Row:      10328,      15086,      61795,      48974,      31862
+# Cycle:                21735 Time:               434750    3st Row:      12513,      61868,      41372,       4178,      29456
+# Cycle:                21740 Time:               434850    4st Row:      38803,       7188,      39684,      34089,      11588
+# Cycle:                21745 Time:               434950    5st Row:      47011,      39921,      61994,      10795,      58110
+# Cycle:                22046 Time:               440970    State after Chi step:
+# Cycle:                22051 Time:               441070    1st Row:       7041,      17760,       7162,      33711,      11580
+# Cycle:                22056 Time:               441170    2st Row:      59737,      13538,      45395,      48966,      28368
+# Cycle:                22061 Time:               441270    3st Row:      12529,      57838,      49820,       4275,      45596
+# Cycle:                22066 Time:               441370    4st Row:       5267,       6205,      45888,       6074,       9536
+# Cycle:                22071 Time:               441470    5st Row:      55209,      37872,      13054,      16170,      60078
+# Cycle:                22075 Time:               441550    Final state of round : 
+# Cycle:                22080 Time:               441650    1st Row:      39690,      17760,       7162,      33711,      11580
+# Cycle:                22085 Time:               441750    2st Row:      59737,      13538,      45395,      48966,      28368
+# Cycle:                22090 Time:               441850    3st Row:      12529,      57838,      49820,       4275,      45596
+# Cycle:                22095 Time:               441950    4st Row:       5267,       6205,      45888,       6074,       9536
+# Cycle:                22100 Time:               442050    5st Row:      55209,      37872,      13054,      16170,      60078
+# Cycle:                22101 Time:               442070    ---------------Round         13--------------
+# Cycle:                22136 Time:               442770    C Value  After theta :     33176,       7073,      59787,       1226,      15902
+# Cycle:                22331 Time:               446670    D Value:       2396,      21135,       4661,      38327,       2043
+# Cycle:                22454 Time:               449130    State After Theta Step: 
+# Cycle:                22459 Time:               449230    1st Row:      37462,       6127,       2511,       5656,      10951
+# Cycle:                22464 Time:               449330    2st Row:      57349,      26221,      41830,      10993,      26923
+# Cycle:                22469 Time:               449430    3st Row:      14765,      45921,      53417,      34052,      46567
+# Cycle:                22474 Time:               449530    4st Row:       7631,      19122,      41333,      33293,       8891
+# Cycle:                22479 Time:               449630    5st Row:      57077,      49535,       8395,      43677,      60757
+# Cycle:                23415 Time:               468350    Temporary State (B) after Rho and Pi:
+# Cycle:                23420 Time:               468450    1st Row:      37462,      54886,      20101,      16816,      31573
+# Cycle:                23425 Time:               468550    2st Row:      33121,      37558,      52585,      18774,      25625
+# Cycle:                23430 Time:               468650    3st Row:      12254,      55720,       2314,      47906,      31703
+# Cycle:                23435 Time:               468750    4st Row:      14678,         94,      34509,      53434,      40362
+# Cycle:                23440 Time:               468850    5st Row:      49779,      30869,      62426,      40507,       1535
+# Cycle:                23741 Time:               474870    State after Chi step:
+# Cycle:                23746 Time:               474970    1st Row:      39639,      55126,      29888,      49586,      16245
+# Cycle:                23751 Time:               475070    2st Row:      52264,      37536,      59744,      51254,      30351
+# Cycle:                23756 Time:               475170    3st Row:      12252,      27528,      18911,      48938,      44023
+# Cycle:                23761 Time:               475270    4st Row:      49111,      20588,      35789,      61678,      40354
+# Cycle:                23766 Time:               475370    5st Row:      16697,      29876,      61982,      23611,      15739
+# Cycle:                23770 Time:               475450    Final state of round : 
+# Cycle:                23775 Time:               475550    1st Row:      39516,      55126,      29888,      49586,      16245
+# Cycle:                23780 Time:               475650    2st Row:      52264,      37536,      59744,      51254,      30351
+# Cycle:                23785 Time:               475750    3st Row:      12252,      27528,      18911,      48938,      44023
+# Cycle:                23790 Time:               475850    4st Row:      49111,      20588,      35789,      61678,      40354
+# Cycle:                23795 Time:               475950    5st Row:      16697,      29876,      61982,      23611,      15739
+# Cycle:                23796 Time:               475970    ---------------Round         14--------------
+# Cycle:                23831 Time:               476670    C Value  After theta :     34630,       2726,      44460,       6779,      17108
+# Cycle:                24026 Time:               480570    D Value:      22424,      56351,      15952,      10244,       5366
+# Cycle:                24149 Time:               483030    State After Theta Step: 
+# Cycle:                24154 Time:               483130    1st Row:      52676,       2889,      19088,      59830,      11139
+# Cycle:                24159 Time:               483230    2st Row:      39856,      20159,      55088,      57394,      25209
+# Cycle:                24164 Time:               483330    3st Row:      30788,      46999,      30607,      38702,      48897
+# Cycle:                24169 Time:               483430    4st Row:      59471,      35955,      46493,      55530,      35156
+# Cycle:                24174 Time:               483530    5st Row:       5793,      43179,      52302,      29759,      10637
+# Cycle:                25110 Time:               502250    Temporary State (B) after Rho and Pi:
+# Cycle:                25115 Time:               502350    1st Row:      52676,      62699,      31676,       7515,      19043
+# Cycle:                25120 Time:               502450    2st Row:      28315,      10134,      49699,      29070,      55689
+# Cycle:                25125 Time:               502550    3st Row:       5778,      52277,      23854,      21641,      23172
+# Cycle:                25130 Time:               502650    4st Row:       6492,      47881,      24286,      56014,      16244
+# Cycle:                25135 Time:               502750    5st Row:       4772,       6512,      32991,      40912,      41646
+# Cycle:                25436 Time:               508770    State after Chi step:
+# Cycle:                25441 Time:               508870    1st Row:      50896,      61608,      14748,      39135,      31304
+# Cycle:                25446 Time:               508970    2st Row:      44730,       5658,      18978,      22428,      55437
+# Cycle:                25451 Time:               509070    3st Row:       1944,      52404,      22314,      20635,      37537
+# Cycle:                25456 Time:               509170    4st Row:      23946,      15113,      31726,      56006,      40309
+# Cycle:                25461 Time:               509270    5st Row:      37419,       1648,      41201,      36816,      44030
+# Cycle:                25465 Time:               509350    Final state of round : 
+# Cycle:                25470 Time:               509450    1st Row:      18009,      61608,      14748,      39135,      31304
+# Cycle:                25475 Time:               509550    2st Row:      44730,       5658,      18978,      22428,      55437
+# Cycle:                25480 Time:               509650    3st Row:       1944,      52404,      22314,      20635,      37537
+# Cycle:                25485 Time:               509750    4st Row:      23946,      15113,      31726,      56006,      40309
+# Cycle:                25490 Time:               509850    5st Row:      37419,       1648,      41201,      36816,      44030
+# Cycle:                25491 Time:               509870    ---------------Round         15--------------
+# Cycle:                25526 Time:               510570    C Value  After theta :      8410,       6015,      65419,      51918,       1775
+# Cycle:                25721 Time:               514470    D Value:      10257,      57293,      33506,      62037,      35706
+# Cycle:                25844 Time:               516930    State After Theta Step: 
+# Cycle:                25849 Time:               517030    1st Row:      28232,      12133,      47998,      27274,      61746
+# Cycle:                25854 Time:               517130    2st Row:      34475,      51671,      51392,      42441,      21495
+# Cycle:                25859 Time:               517230    3st Row:      12169,       4985,      54728,      41678,       6619
+# Cycle:                25864 Time:               517330    4st Row:      30107,      58564,      63756,      10387,       5647
+# Cycle:                25869 Time:               517430    5st Row:      47674,      55741,       8723,      32133,       8324
+# Cycle:                26805 Time:               536150    Temporary State (B) after Rho and Pi:
+# Cycle:                26810 Time:               536250    1st Row:      28232,      31901,      18094,       4709,       2081
+# Cycle:                26815 Time:               536350    2st Row:      42664,      16245,      31817,      40088,      25666
+# Cycle:                26820 Time:               536450    3st Row:      24266,      12338,      40261,       3862,      59626
+# Cycle:                26825 Time:               536550    4st Row:      38793,      27320,      58445,      31878,      34173
+# Cycle:                26830 Time:               536650    5st Row:      44767,      58578,      60812,      14059,      26359
+# Cycle:                27131 Time:               542670    State after Chi step:
+# Cycle:                27136 Time:               542770    1st Row:      27754,      27868,      20142,      29741,       6324
+# Cycle:                27141 Time:               542870    2st Row:      59040,      49125,       7179,       7728,      32023
+# Cycle:                27146 Time:               542970    3st Row:      54159,      12832,      32173,       6422,      51418
+# Cycle:                27151 Time:               543070    4st Row:       5068,      29242,      25908,      28166,      60749
+# Cycle:                27156 Time:               543170    5st Row:      42963,      63153,      44440,      48867,       9975
+# Cycle:                27160 Time:               543250    Final state of round : 
+# Cycle:                27165 Time:               543350    1st Row:      60521,      27868,      20142,      29741,       6324
+# Cycle:                27170 Time:               543450    2st Row:      59040,      49125,       7179,       7728,      32023
+# Cycle:                27175 Time:               543550    3st Row:      54159,      12832,      32173,       6422,      51418
+# Cycle:                27180 Time:               543650    4st Row:       5068,      29242,      25908,      28166,      60749
+# Cycle:                27185 Time:               543750    5st Row:      42963,      63153,      44440,      48867,       9975
+# Cycle:                27186 Time:               543770    ---------------Round         16--------------
+# Cycle:                27221 Time:               544470    C Value  After theta :     27993,      26002,      59300,      41966,      26307
+# Cycle:                27416 Time:               548370    D Value:      44519,      41488,       8783,      10786,      31068
+# Cycle:                27539 Time:               550830    State After Theta Step: 
+# Cycle:                27544 Time:               550930    1st Row:      16782,      52940,      27873,      24079,      25064
+# Cycle:                27549 Time:               551030    2st Row:      19271,       7669,      15940,      13330,       1099
+# Cycle:                27554 Time:               551130    3st Row:      32360,      36912,      24546,      13108,      45446
+# Cycle:                27559 Time:               551230    4st Row:      48683,      53290,      18299,      17444,      37905
+# Cycle:                27564 Time:               551330    5st Row:       2612,      21665,      36823,      38081,      24491
+# Cycle:                28500 Time:               570050    Temporary State (B) after Rho and Pi:
+# Cycle:                28505 Time:               570150    1st Row:      16782,      20959,       4863,      33928,      55274
+# Cycle:                28510 Time:               570250    2st Row:      62944,      17584,      62275,      23045,      61946
+# Cycle:                28515 Time:               570350    3st Row:      40345,      37135,      26726,       4500,      10448
+# Cycle:                28520 Time:               570450    4st Row:      17167,      46196,      49728,      41917,      49556
+# Cycle:                28525 Time:               570550    5st Row:      23352,       2330,      50008,      22396,      21125
+# Cycle:                28826 Time:               576570    State after Chi step:
+# Cycle:                28831 Time:               576670    1st Row:      17326,      54751,      16797,      33932,      51131
+# Cycle:                28836 Time:               576770    2st Row:      18083,      19636,      21177,      24069,      61930
+# Cycle:                28841 Time:               576870    3st Row:      62969,      32927,      16422,      33949,      10454
+# Cycle:                28846 Time:               576970    4st Row:        271,      38345,      33344,      41398,      30180
+# Cycle:                28851 Time:               577070    5st Row:      39288,       7486,      50137,      24132,      21127
+# Cycle:                28855 Time:               577150    Final state of round : 
+# Cycle:                28860 Time:               577250    1st Row:      50092,      54751,      16797,      33932,      51131
+# Cycle:                28865 Time:               577350    2st Row:      18083,      19636,      21177,      24069,      61930
+# Cycle:                28870 Time:               577450    3st Row:      62969,      32927,      16422,      33949,      10454
+# Cycle:                28875 Time:               577550    4st Row:        271,      38345,      33344,      41398,      30180
+# Cycle:                28880 Time:               577650    5st Row:      39288,       7486,      50137,      24132,      21127
+# Cycle:                28881 Time:               577670    ---------------Round         17--------------
+# Cycle:                28916 Time:               578370    C Value  After theta :     59521,      37123,       4763,      41446,      14820
+# Cycle:                29111 Time:               582270    D Value:       7139,      52663,      53966,      24915,      28901
+# Cycle:                29234 Time:               584730    State After Theta Step: 
+# Cycle:                29239 Time:               584830    1st Row:      55375,       6248,      37715,      58847,      46942
+# Cycle:                29244 Time:               584930    2st Row:      23872,      33027,      32887,      16214,      33039
+# Cycle:                29249 Time:               585030    3st Row:      60954,      19752,      37608,      58830,      22579
+# Cycle:                29254 Time:               585130    4st Row:       6892,      22654,      20622,      49381,       1281
+# Cycle:                29259 Time:               585230    5st Row:      33435,      53385,       4375,      16151,       8802
+# Cycle:                30195 Time:               603950    Temporary State (B) after Rho and Pi:
+# Cycle:                30200 Time:               604050    1st Row:      55375,      14352,      17559,       7352,      34968
+# Cycle:                30205 Time:               604150    2st Row:      65117,       4344,      28887,      51983,      57890
+# Cycle:                30210 Time:               604250    3st Row:      12496,       7648,      40395,        261,       2670
+# Cycle:                30215 Time:               604350    4st Row:      62906,      54277,      41268,      10311,       5951
+# Cycle:                30220 Time:               604450    5st Row:      58580,      43807,       6572,      55349,      16935
+# Cycle:                30521 Time:               610470    State after Chi step:
+# Cycle:                30526 Time:               610570    1st Row:      40136,       8248,      50327,      19711,      43144
+# Cycle:                30531 Time:               610670    2st Row:      40538,      39920,      20727,      55122,      57986
+# Cycle:                30536 Time:               610770    3st Row:      45275,       7652,      38817,      12693,       1870
+# Cycle:                30541 Time:               610870    4st Row:      54410,      56390,      46604,      51399,       5946
+# Cycle:                30546 Time:               610970    5st Row:      62580,      27406,       7086,      31973,      18732
+# Cycle:                30550 Time:               611050    Final state of round : 
+# Cycle:                30555 Time:               611150    1st Row:      40008,       8248,      50327,      19711,      43144
+# Cycle:                30560 Time:               611250    2st Row:      40538,      39920,      20727,      55122,      57986
+# Cycle:                30565 Time:               611350    3st Row:      45275,       7652,      38817,      12693,       1870
+# Cycle:                30570 Time:               611450    4st Row:      54410,      56390,      46604,      51399,       5946
+# Cycle:                30575 Time:               611550    5st Row:      62580,      27406,       7086,      31973,      18732
+# Cycle:                30576 Time:               611570    ---------------Round         18--------------
+# Cycle:                30611 Time:               612270    C Value  After theta :     37431,       4452,      44643,       7706,       4946
+# Cycle:                30806 Time:               616170    D Value:      12698,      52976,      11600,      35015,      14965
+# Cycle:                30929 Time:               618630    State After Theta Step: 
+# Cycle:                30934 Time:               618730    1st Row:      44498,      61128,      59847,      50232,      37629
+# Cycle:                30939 Time:               618830    2st Row:      44992,      21760,      32167,      24469,      55543
+# Cycle:                30944 Time:               618930    3st Row:      33089,      54036,      47857,      47442,      15675
+# Cycle:                30949 Time:               619030    4st Row:      58640,       4790,      39772,      16384,      11599
+# Cycle:                30954 Time:               619130    5st Row:      50670,      42494,      14078,      62498,      29529
+# Cycle:                31890 Time:               637850    Temporary State (B) after Rho and Pi:
+# Cycle:                31895 Time:               637950    1st Row:      44498,       1360,      36311,          8,      23766
+# Cycle:                31900 Time:               638050    2st Row:      35907,      36733,       2572,      49750,      50911
+# Cycle:                31905 Time:               638150    3st Row:      56721,      27103,      42354,      20269,       6075
+# Cycle:                31910 Time:               638250    4st Row:      60567,      64522,      21324,      19886,       8948
+# Cycle:                31915 Time:               638350    5st Row:      64113,      51887,      40350,       8650,      38906
+# Cycle:                32216 Time:               644370    State after Chi step:
+# Cycle:                32221 Time:               644470    1st Row:       9557,       1368,      53505,      41224,      23766
+# Cycle:                32226 Time:               644570    2st Row:      35907,      20271,       3717,      51798,      50659
+# Cycle:                32231 Time:               644670    3st Row:      22961,       9170,      46560,      34605,      14325
+# Cycle:                32236 Time:               644770    4st Row:      61395,      61608,      28956,      33197,      13052
+# Cycle:                32241 Time:               644870    5st Row:      61281,      60143,       2990,      18891,      38772
+# Cycle:                32245 Time:               644950    Final state of round : 
+# Cycle:                32250 Time:               645050    1st Row:      42335,       1368,      53505,      41224,      23766
+# Cycle:                32255 Time:               645150    2st Row:      35907,      20271,       3717,      51798,      50659
+# Cycle:                32260 Time:               645250    3st Row:      22961,       9170,      46560,      34605,      14325
+# Cycle:                32265 Time:               645350    4st Row:      61395,      61608,      28956,      33197,      13052
+# Cycle:                32270 Time:               645450    5st Row:      61281,      60143,       2990,      18891,      38772
+# Cycle:                32271 Time:               645470    ---------------Round         19--------------
+# Cycle:                32306 Time:               646170    C Value  After theta :     28703,      29666,       4310,       9237,       2888
+# Cycle:                32501 Time:               650070    D Value:      60556,      20915,      15304,       1606,      50219
+# Cycle:                32624 Time:               652530    State After Theta Step: 
+# Cycle:                32629 Time:               652630    1st Row:      18899,      21739,      60105,      42830,      39165
+# Cycle:                32634 Time:               652730    2st Row:      24783,       7836,      13645,      52240,        456
+# Cycle:                32639 Time:               652830    3st Row:      46397,      29281,      36392,      33131,      62430
+# Cycle:                32644 Time:               652930    4st Row:        863,      41243,      19156,      34795,      63191
+# Cycle:                32649 Time:               653030    5st Row:       1005,      47964,      12390,      20365,      21343
+# Cycle:                33585 Time:               671750    Temporary State (B) after Rho and Pi:
+# Cycle:                33590 Time:               671850    1st Row:      18899,      49641,      17521,      64880,      54487
+# Cycle:                33595 Time:               671950    2st Row:      60020,       7296,      43501,      29731,      50700
+# Cycle:                33600 Time:               672050    3st Row:      43478,      21325,      55042,      55286,       4020
+# Cycle:                33605 Time:               672150    4st Row:      60615,       3318,      34249,       9578,      36175
+# Cycle:                33610 Time:               672250    5st Row:      31410,       2150,      61305,      48646,      60786
+# Cycle:                33911 Time:               678270    State after Chi step:
+# Cycle:                33916 Time:               678370    1st Row:      19907,      30953,      17654,      62576,      21759
+# Cycle:                33921 Time:               678470    2st Row:      19225,      18562,      11233,      23635,      53900
+# Cycle:                33926 Time:               678570    3st Row:      11732,      21433,      57090,      30644,      23997
+# Cycle:                33931 Time:               678670    4st Row:      28110,      11476,       3532,      17898,      36223
+# Cycle:                33936 Time:               678770    5st Row:      40363,       6240,      44553,      44166,      60726
+# Cycle:                33940 Time:               678850    Final state of round : 
+# Cycle:                33945 Time:               678950    1st Row:      19913,      30953,      17654,      62576,      21759
+# Cycle:                33950 Time:               679050    2st Row:      19225,      18562,      11233,      23635,      53900
+# Cycle:                33955 Time:               679150    3st Row:      11732,      21433,      57090,      30644,      23997
+# Cycle:                33960 Time:               679250    4st Row:      28110,      11476,       3532,      17898,      36223
+# Cycle:                33965 Time:               679350    5st Row:      40363,       6240,      44553,      44166,      60726
+# Cycle:                33966 Time:               679370    Done!
+# At t=           679370000 clk=1 finish=1 return_val=         0
+# Cycles:                33966
+# ** Note: $finish    : sha3.v(14120)
+#    Time: 679370 ns  Iteration: 3  Instance: /main_tb
