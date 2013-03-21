@@ -15,6 +15,8 @@ END rhoandpi;
 ARCHITECTURE rhoAndPiArch OF rhoandpi IS
 TYPE rotateRow IS ARRAY (0 to 4) OF INTEGER;
 TYPE rotateMatrix IS ARRAY (0 to 4) OF rotateRow;
+--Constants are predefined by the SHA-3 specification and 
+--can be found at http://keccak.noekeon.org/specs_summary.html
 CONSTANT rotateConstants : rotateMatrix := ((0, 1, 62, 28, 27), 
 									       (36, 44, 6, 55, 20), 
 									       (3, 10, 43, 25, 39),
