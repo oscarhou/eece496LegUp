@@ -1,3 +1,9 @@
+--Selects the round constants used in the IOTA step
+--At the end of each round the round constant is XORed with the lane at position [0][0] of the state
+--Round constants can be generated on the fly or pre-computed like so. 
+--The precomputed 64 bit round constant values can be found at http://keccak.noekeon.org/specs_summary.html
+
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;	
@@ -5,46 +11,42 @@ use ieee.std_logic_arith.all;
 
 ENTITY roundConstants IS
 PORT(
-    round: in std_logic_vector(4 downto 0);
-    roundConstantOut: out std_logic_vector(63 downto 0));
+    roundCounterIn: in integer;
+    roundConstantOut: out std_logic_vector(15 downto 0));
 
 END roundConstants;
 
 ARCHITECTURE roundArch OF roundConstants IS
-  SIGNAL internalRoundConstant: std_logic_vector(63 downto 0);
+  SIGNAL roundConstant: std_logic_vector(15 downto 0);
 BEGIN
 
-PROCESS (round)
+PROCESS (roundCounterIn)
 BEGIN
-	CASE round IS
-      WHEN "00000" => internalRoundConstant <= X"0000000000000000" ;	
-      WHEN "00001" => internalRoundConstant <= X"0000000000000001" ;
-	    WHEN "00010" => internalRoundConstant <= X"0000000000008082" ;
-	    WHEN "00011" => internalRoundConstant <= X"800000000000808A" ;
-	    WHEN "00100" => internalRoundConstant <= X"8000000080008000" ;
-	    WHEN "00101" => internalRoundConstant <= X"000000000000808B" ;
-	    WHEN "00110" => internalRoundConstant <= X"0000000080000001" ;
-	    WHEN "00111" => internalRoundConstant <= X"8000000080008081" ;
-	    WHEN "01000" => internalRoundConstant <= X"8000000000008009" ;
-	    WHEN "01001" => internalRoundConstant <= X"000000000000008A" ;
-	    WHEN "01010" => internalRoundConstant <= X"0000000000000088" ;
-	    WHEN "01011" => internalRoundConstant <= X"0000000080008009" ;
-	    WHEN "01100" => internalRoundConstant <= X"000000008000000A" ;
-	    WHEN "01101" => internalRoundConstant <= X"000000008000808B" ;
-	    WHEN "01110" => internalRoundConstant <= X"800000000000008B" ;
-	    WHEN "01111" => internalRoundConstant <= X"8000000000008089" ;
-	    WHEN "10000" => internalRoundConstant <= X"8000000000008003" ;
-	    WHEN "10001" => internalRoundConstant <= X"8000000000008002" ;
-	    WHEN "10010" => internalRoundConstant <= X"8000000000000080" ;
-	    WHEN "10011" => internalRoundConstant <= X"000000000000800A" ;
-	    WHEN "10100" => internalRoundConstant <= X"800000008000000A" ;
-	    WHEN "10101" => internalRoundConstant <= X"8000000080008081" ;
-	    WHEN "10110" => internalRoundConstant <= X"8000000000008080" ;
-	    WHEN "10111" => internalRoundConstant <= X"0000000080000001" ;
-	    WHEN "11000" => internalRoundConstant <= X"8000000080008008" ;	    	    
-	    WHEN OTHERS => internalRoundConstant <=(OTHERS => '0');
-        END CASE;
+	CASE roundCounterIn IS
+		WHEN 0 => roundConstant <= X"0001";
+		WHEN 1 => roundConstant <= X"8082";
+		WHEN 2 => roundConstant <= X"808A";
+		WHEN 3 => roundConstant <= X"8000";
+		WHEN 4 => roundConstant <= X"808B";
+		WHEN 5 => roundConstant <= X"0001";
+		WHEN 6 => roundConstant <= X"8081";
+		WHEN 7 => roundConstant <= X"8009";
+		WHEN 8 => roundConstant <= X"008A";
+		WHEN 9 => roundConstant <=  X"0088";
+		WHEN 10 => roundConstant <= X"8009";
+		WHEN 11 => roundConstant <= X"000A";
+		WHEN 12 => roundConstant <= X"808B";
+		WHEN 13 => roundConstant <= X"008B";
+		WHEN 14 => roundConstant <= X"8089";
+		WHEN 15 => roundConstant <= X"8003";
+		WHEN 16 => roundConstant <= X"8002";
+		WHEN 17 => roundConstant <= X"0080";
+		WHEN 18 => roundConstant <= X"800A";
+		WHEN 19 => roundConstant <= X"000A";
+		WHEN 20 => roundConstant <= X"8081";
+		WHEN OTHERS=> roundConstant <= X"0000";
+	END CASE;
 END PROCESS;
 
-roundConstantOut <= internalRoundConstant;
+roundConstantOut <= roundConstant;
 END roundArch;

@@ -14,7 +14,6 @@ ARCHITECTURE thetaArch OF theta IS
 	SIGNAL thetaSaveState: state;
 	SIGNAL internalStart: std_logic;
 	SIGNAL C,D: row;
-	SIGNAL clkCounter: std_logic_vector (1 downto 0);
 	SIGNAL internalReady: std_logic;
 BEGIN
 
