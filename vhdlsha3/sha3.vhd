@@ -9,8 +9,8 @@ use work.sha3_types.all;
 ENTITY sha3 IS
 PORT(inputLane :in lane;
 	  memOutOut: out state;
-	  colOut: out std_logic_vector(2 downto 0);
-	  rowOut: out std_logic_vector(2 downto 0);
+	  colOut: out integer;
+	  rowOut: out integer;
 	  systemState: out std_logic_vector (4 downto 0);
 	  roundConstantOut: out std_logic_vector(15 downto 0);
 	  valid:out std_logic;
@@ -24,16 +24,14 @@ SIGNAL keccakInternalState : state;
 SIGNAL dataInCounter :integer range 0 to 25;
 SIGNAL clockCounter: integer;
 SIGNAL roundCounter: integer range 0 to 20;
-SIGNAL colSelect: std_logic_vector(2 downto 0);
-SIGNAL rowSelect: std_logic_vector(2 downto 0);
-SIGNAL readFromMem: std_logic;
+SIGNAL colSelect: integer;
+SIGNAL rowSelect: integer;
 SIGNAL thetaInState : state;
 SIGNAL rhoandpiOutState:state;
 SIGNAL rhoandpiInState: state;
 SIGNAL chiOutState:state;
 SIGNAL roundConstant: std_logic_vector(15 downto 0);
 SIGNAL memInput: lane;
-signal memOut:state;
 signal thetaState:row;
 --state registers
 COMPONENT shaMemory
@@ -73,31 +71,28 @@ BEGIN
 	IF (reset = '1') THEN
 		valid <= '0';
 		mainState <= "00000";
-		colSelect <= "111";
-		rowSelect <= "111";
+		colSelect <= 0;
+		rowSelect <= 0;
 		roundCounter <= 0;
 		clockCounter <= 0;
 	ELSIF (rising_edge(clk)) THEN
 		CASE (mainState) IS
 			--First state -- Load data with the initial state;
 			WHEN "00000" =>
-				readFromMem <= '0';
-				memInput <= inputLane;
-				if (rowSelect /= "101" ) then
+				keccakInternalState(rowSelect)(colSelect) <= inputLane;
+				if (rowSelect /= 5 ) then
 					mainState <= "00000";
 					--Increment the column select 4 times before
 					--incrementing rowselect once.
 					if (colSelect < 4) then
 						colSelect <= colSelect + 1;
 					else
-						colSelect <= "000";
+						colSelect <= 0;
 						rowSelect <= rowSelect + 1;
 					end if;
 				else 
-					colSelect <= "000";
-					rowSelect <= "000";
-					readFromMem <= '1'; 
-					keccakInternalState <= memOut;
+					colSelect <= 0;
+					rowSelect <= 0;
 					mainState <= "00001";
 				end if;
 			--wait for 2 clocks for signals to settle
@@ -149,7 +144,7 @@ END PROCESS;
 roundConstantOut <= roundConstant;
 
 --Memory block for passing in data one lane at a time
-MEM:shaMemory port map (readFromMem, clk, memOut,memInput, rowSelect, colSelect, reset);
+--MEM:shaMemory port map (readFromMem, clk, memOut,memInput, rowSelect, colSelect, reset);
 -- Perform the Theta step of the SHA-3 Algorithm
 THETASTEP:theta port map(thetaInState, thetaState);
 -- Perform the rho and pi step of the algorithm

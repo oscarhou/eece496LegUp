@@ -11,18 +11,19 @@ ENTITY theta IS
 END theta;
 
 ARCHITECTURE thetaArch OF theta IS
-	SIGNAL thetaSaveState: state;
+	--SIGNAL thetaSaveState: state;
 	SIGNAL internalStart: std_logic;
 	SIGNAL C,D: row;
 	SIGNAL internalReady: std_logic;
 BEGIN
 
 -- Get the C row
-thetaSaveState <= thetaInData;
+--thetaSaveState <= thetaInData;
 
 
 ThetaFillC: for i in 0 to 4 generate
-	CLoop: C(i) <= thetaSaveState(0)(i) xor thetaSaveState(1)(i) xor thetaSaveState(2)(i) xor thetaSaveState(3)(i) xor thetaSaveState(4)(i);
+	--CLoop: C(i) <= thetaSaveState(0)(i) xor thetaSaveState(1)(i) xor thetaSaveState(2)(i) xor thetaSaveState(3)(i) xor thetaSaveState(4)(i);
+	CLoop: C(i) <= thetaInData(0)(i) xor thetaInData(1)(i) xor thetaInData(2)(i) xor thetaInData(3)(i) xor thetaInData(4)(i);
 end generate ThetaFillC;
 	--	
 D(0) <= (C(1)(14 downto 0) & C(1)(15)) xor C(4);
