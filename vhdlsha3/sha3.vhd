@@ -97,9 +97,6 @@ BEGIN
 				end if;
 			--wait for 2 clocks for signals to settle
 			WHEN "00001" =>
-				--thetaInState <= keccakInternalState;
-				--mainState <= "00010";
-			--WHEN "00010" =>
 				--Part of the theta step.
 				--XOR the output of the theta block into the state
 				SAVETHETAX: for x in 0 to 4 loop
@@ -112,10 +109,7 @@ BEGIN
 			--The block is combinational and the output goes
 			--directly into the chi block
 			WHEN "00011" =>
-				rhoandpiInState <= keccakInternalState;
-				mainState <= "00100";
 			--Assign the main state to be the output of the chi block
-			WHEN "00100" =>
 				keccakInternalState <= chiOutState;
 				mainState <= "00101";
 			WHEN "00101" =>
@@ -143,12 +137,13 @@ BEGIN
 END PROCESS;
 roundConstantOut <= roundConstant;
 
---Memory block for passing in data one lane at a time
---MEM:shaMemory port map (readFromMem, clk, memOut,memInput, rowSelect, colSelect, reset);
 -- Perform the Theta step of the SHA-3 Algorithm
+-- Thetablock is constantly being fed the value of the internal state
+-- the data output will be latched when the correct state is met
 THETASTEP:theta port map(keccakInternalState, thetaState);
 -- Perform the rho and pi step of the algorithm
-RHOANDPISTEP: rhoandpi port map(rhoandpiInState, rhoandpiOutState);
+-- Also constantly fed the internal state, the combinational
+RHOANDPISTEP: rhoandpi port map(keccakInternalState, rhoandpiOutState);
 -- Perform the chi step of the algorithm
 CHISTEP: chi port map(rhoandpiOutState, chiOutState);
 ROUNDCONSTANTBLOCK: roundConstants port map (roundCounter, roundConstant);
