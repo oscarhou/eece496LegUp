@@ -97,9 +97,9 @@ BEGIN
 				end if;
 			--wait for 2 clocks for signals to settle
 			WHEN "00001" =>
-				thetaInState <= keccakInternalState;
-				mainState <= "00010";
-			WHEN "00010" =>
+				--thetaInState <= keccakInternalState;
+				--mainState <= "00010";
+			--WHEN "00010" =>
 				--Part of the theta step.
 				--XOR the output of the theta block into the state
 				SAVETHETAX: for x in 0 to 4 loop
@@ -146,7 +146,7 @@ roundConstantOut <= roundConstant;
 --Memory block for passing in data one lane at a time
 --MEM:shaMemory port map (readFromMem, clk, memOut,memInput, rowSelect, colSelect, reset);
 -- Perform the Theta step of the SHA-3 Algorithm
-THETASTEP:theta port map(thetaInState, thetaState);
+THETASTEP:theta port map(keccakInternalState, thetaState);
 -- Perform the rho and pi step of the algorithm
 RHOANDPISTEP: rhoandpi port map(rhoandpiInState, rhoandpiOutState);
 -- Perform the chi step of the algorithm
