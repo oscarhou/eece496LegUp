@@ -9,8 +9,8 @@ use work.sha3_types.all;
 ENTITY sha3 IS
 PORT(inputLane :in lane;
 	  memOutOut: out state;
-	  colOut: out std_logic_vector(2 downto 0);
-	  rowOut: out std_logic_vector(2 downto 0);
+	  colOut: out integer;
+	  rowOut: out integer;
 	  systemState: out std_logic_vector (4 downto 0);
 	  roundConstantOut: out std_logic_vector(15 downto 0);
 	  valid:out std_logic;
@@ -24,16 +24,14 @@ SIGNAL keccakInternalState : state;
 SIGNAL dataInCounter :integer range 0 to 25;
 SIGNAL clockCounter: integer;
 SIGNAL roundCounter: integer range 0 to 20;
-SIGNAL colSelect: std_logic_vector(2 downto 0);
-SIGNAL rowSelect: std_logic_vector(2 downto 0);
-SIGNAL readFromMem: std_logic;
+SIGNAL colSelect: integer;
+SIGNAL rowSelect: integer;
 SIGNAL thetaInState : state;
 SIGNAL rhoandpiOutState:state;
 SIGNAL rhoandpiInState: state;
 SIGNAL chiOutState:state;
 SIGNAL roundConstant: std_logic_vector(15 downto 0);
 SIGNAL memInput: lane;
-signal memOut:state;
 signal thetaState:row;
 --state registers
 COMPONENT shaMemory
@@ -44,6 +42,11 @@ COMPONENT shaMemory
 		  laneRow: std_logic_vector(2 downto 0);
 		  laneCol: std_logic_vector(2 downto 0);
 		  reset: in std_logic);
+END COMPONENT;
+COMPONENT roundConstants IS
+PORT(
+    roundCounterIn: in integer;
+    roundConstantOut: out std_logic_vector(15 downto 0));
 END COMPONENT;
 COMPONENT chi IS
 PORT (chiInState: in state;
@@ -68,38 +71,32 @@ BEGIN
 	IF (reset = '1') THEN
 		valid <= '0';
 		mainState <= "00000";
-		colSelect <= "111";
-		rowSelect <= "111";
+		colSelect <= 0;
+		rowSelect <= 0;
 		roundCounter <= 0;
 		clockCounter <= 0;
 	ELSIF (rising_edge(clk)) THEN
 		CASE (mainState) IS
 			--First state -- Load data with the initial state;
 			WHEN "00000" =>
-				readFromMem <= '0';
-				memInput <= inputLane;
-				if (rowSelect /= "101" ) then
+				keccakInternalState(rowSelect)(colSelect) <= inputLane;
+				if (rowSelect /= 5 ) then
 					mainState <= "00000";
 					--Increment the column select 4 times before
 					--incrementing rowselect once.
 					if (colSelect < 4) then
 						colSelect <= colSelect + 1;
 					else
-						colSelect <= "000";
+						colSelect <= 0;
 						rowSelect <= rowSelect + 1;
 					end if;
 				else 
-					colSelect <= "000";
-					rowSelect <= "000";
-					readFromMem <= '1'; 
-					keccakInternalState <= memOut;
+					colSelect <= 0;
+					rowSelect <= 0;
 					mainState <= "00001";
 				end if;
 			--wait for 2 clocks for signals to settle
 			WHEN "00001" =>
-				thetaInState <= keccakInternalState;
-				mainState <= "00010";
-			WHEN "00010" =>
 				--Part of the theta step.
 				--XOR the output of the theta block into the state
 				SAVETHETAX: for x in 0 to 4 loop
@@ -112,10 +109,7 @@ BEGIN
 			--The block is combinational and the output goes
 			--directly into the chi block
 			WHEN "00011" =>
-				rhoandpiInState <= keccakInternalState;
-				mainState <= "00100";
 			--Assign the main state to be the output of the chi block
-			WHEN "00100" =>
 				keccakInternalState <= chiOutState;
 				mainState <= "00101";
 			WHEN "00101" =>
@@ -141,46 +135,17 @@ BEGIN
 		END CASE;
 	END IF;
 END PROCESS;
---Selects the round constants
---At the end of each round the round constant is XORed with the lane at position [0][0] of the state
---Round constants can be generated on the fly or pre-computed like so. 
---The precomputed 64 bit round constant values can be found at http://keccak.noekeon.org/specs_summary.html
-PROCESS (roundCounter)
-BEGIN
-	CASE roundCounter IS
-		WHEN 0 => roundConstant <= X"0001";
-		WHEN 1 => roundConstant <= X"8082";
-		WHEN 2 => roundConstant <= X"808A";
-		WHEN 3 => roundConstant <= X"8000";
-		WHEN 4 => roundConstant <= X"808B";
-		WHEN 5 => roundConstant <= X"0001";
-		WHEN 6 => roundConstant <= X"8081";
-		WHEN 7 => roundConstant <= X"8009";
-		WHEN 8 => roundConstant <= X"008A";
-		WHEN 9 => roundConstant <=  X"0088";
-		WHEN 10 => roundConstant <= X"8009";
-		WHEN 11 => roundConstant <= X"000A";
-		WHEN 12 => roundConstant <= X"808B";
-		WHEN 13 => roundConstant <= X"008B";
-		WHEN 14 => roundConstant <= X"8089";
-		WHEN 15 => roundConstant <= X"8003";
-		WHEN 16 => roundConstant <= X"8002";
-		WHEN 17 => roundConstant <= X"0080";
-		WHEN 18 => roundConstant <= X"800A";
-		WHEN 19 => roundConstant <= X"000A";
-		WHEN 20 => roundConstant <= X"8081";
-		WHEN OTHERS=> roundConstant <= X"0000";
-	END CASE;
-END PROCESS;
 roundConstantOut <= roundConstant;
 
---Memory block for passing in data one lane at a time
-MEM:shaMemory port map (readFromMem, clk, memOut,memInput, rowSelect, colSelect, reset);
 -- Perform the Theta step of the SHA-3 Algorithm
-THETASTEP:theta port map(thetaInState, thetaState);
+-- Thetablock is constantly being fed the value of the internal state
+-- the data output will be latched when the correct state is met
+THETASTEP:theta port map(keccakInternalState, thetaState);
 -- Perform the rho and pi step of the algorithm
-RHOANDPISTEP: rhoandpi port map(rhoandpiInState, rhoandpiOutState);
+-- Also constantly fed the internal state, the combinational
+RHOANDPISTEP: rhoandpi port map(keccakInternalState, rhoandpiOutState);
 -- Perform the chi step of the algorithm
 CHISTEP: chi port map(rhoandpiOutState, chiOutState);
+ROUNDCONSTANTBLOCK: roundConstants port map (roundCounter, roundConstant);
 
 END shaArch;
