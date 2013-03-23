@@ -15,15 +15,14 @@
 #define PERM_WIDTH 25 * LANE_WIDTH 
 
 typedef unsigned short Lane;
-Lane inputOne[5][5]= {1, 0, 0, 0, 0,
-                      0, 0, 0, 0, 0,
-                      0, 0, 0, 0, 0,
-                      0, 0, 0, 0, 0,
-                      0, 0, 0, 0, 0};
 /*
 Round Constants
 */
-unsigned short RC[24];
+unsigned short RC[24] = {0x0001, 0x8082, 0x808A, 0x8000, 0x808B,
+                         0x0001, 0x8081, 0x8009, 0x008A, 0x0088,
+                         0x8009, 0x000A, 0x808B, 0x008B, 0x8089,
+                         0x8003, 0x8002, 0x0080, 0x800A, 0x000A,
+                         0x8081, 0x8080, 0x0001, 0x8008};
 /*
 Rotation Offset 2d Array
 */
@@ -113,45 +112,13 @@ void roundFunction (Lane A[][ARRAY_WIDTH])
 
 int main() {
     int round = 0;
-    int result = 0;
- /*   Lane A[ARRAY_WIDTH * ARRAY_WIDTH] = {1, 0, 0, 0, 0,
+    Lane A[ARRAY_WIDTH][ARRAY_WIDTH] = {1, 1, 1, 1, 1,
                         0, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0,
-                        8000000000000000, 0, 0, 0, 0,
-                        0, 0, 0, 0, 0};;*/
-    Lane A[ARRAY_WIDTH][ARRAY_WIDTH] = {460, 0, 0, 0, 0,
-                        0, 0, 32768, 0, 0,
                         0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0};;
 
-    RC[0] = (Lane)0x0000000000000001;
-    RC[1] = (Lane)0x0000000000008082;
-    RC[2] = (Lane)0x800000000000808A;
-    RC[3] = (Lane)0x8000000080008000;
-    RC[4] = (Lane)0x000000000000808B;
-    RC[5] = (Lane)0x0000000080000001;
-    RC[6] = (Lane)0x8000000080008081;
-    RC[7] = (Lane)0x8000000000008009;
-    RC[8] = (Lane)0x000000000000008A;
-    RC[9] = (Lane)0x0000000000000088;
-    RC[10] = (Lane)0x0000000080008009;
-    RC[11] = (Lane)0x000000008000000A;
-    RC[12] = (Lane)0x000000008000808B;
-    RC[13] = (Lane)0x800000000000008B;
-    RC[14] = (Lane)0x8000000000008089;
-    RC[15] = (Lane)0x8000000000008003;
-    RC[16] = (Lane)0x8000000000008002;
-    RC[17] = (Lane)0x8000000000000080;
-    RC[18] = (Lane)0x000000000000800A;
-    RC[19] = (Lane)0x800000008000000A;
-    RC[20] = (Lane)0x8000000080008081;
-    RC[21] = (Lane)0x8000000000008080;
-    RC[22] = (Lane)0x0000000080000001;
-    RC[23] = (Lane)0x8000000080008008;
-
-
-    for (round = 0; round < ROUNDS; round++)
+       loop: for (round = 0; round < ROUNDS; round++)
     {
         printf("---------------Round %d--------------\n", round);
         roundFunction(A);
@@ -165,5 +132,5 @@ int main() {
         printf("5st Row: %d, %d, %d, %d, %d\n", A[4][0],A[4][1],A[4][2],A[4][3],A[4][4]);
     }
     printf("Done!\n");
-    return result;
+    return 0;
 }
