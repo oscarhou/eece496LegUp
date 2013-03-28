@@ -53,12 +53,12 @@ void roundFunction (Lane A[][ARRAY_WIDTH])
         C[x] = A[0][x] ^ A[1][x] ^ A[2][x] ^ A[3][x] ^ A[4][x];
     }
 
-	printf("C Value  After theta :%d, %d, %d, %d, %d\n", C[0], C[1],C[2],C[3],C[4]);
+	//printf("C Value  After theta :%d, %d, %d, %d, %d\n", C[0], C[1],C[2],C[3],C[4]);
     for (x = 0; x < ARRAY_WIDTH; x++)
     {
         D[x] = (rotateLeft(C[(x+1) % 5], 1) ^ C[(x+4) % 5]) ;
     }
-	printf("D Value: %d, %d, %d, %d, %d\n", D[0], D[1],D[2],D[3],D[4]);
+	//printf("D Value: %d, %d, %d, %d, %d\n", D[0], D[1],D[2],D[3],D[4]);
 	
     for (x = 0; x < ARRAY_WIDTH; x++)
     {
@@ -67,12 +67,12 @@ void roundFunction (Lane A[][ARRAY_WIDTH])
             A[y][x] =  A[y][x] ^ D[x];
         }
     }
-    printf("State After Theta Step: \n");
-	printf("1st Row: %d, %d, %d, %d, %d\n", A[0][0],A[0][1],A[0][2],A[0][3],A[0][4]);
-    printf("2st Row: %d, %d, %d, %d, %d\n", A[1][0],A[1][1],A[1][2],A[1][3],A[1][4]);
-    printf("3st Row: %d, %d, %d, %d, %d\n", A[2][0],A[2][1],A[2][2],A[2][3],A[2][4]);
-    printf("4st Row: %d, %d, %d, %d, %d\n", A[3][0],A[3][1],A[3][2],A[3][3],A[3][4]);
-    printf("5st Row: %d, %d, %d, %d, %d\n", A[4][0],A[4][1],A[4][2],A[4][3],A[4][4]);
+    //printf("State After Theta Step: \n");
+	//printf("1st Row: %d, %d, %d, %d, %d\n", A[0][0],A[0][1],A[0][2],A[0][3],A[0][4]);
+    //printf("2st Row: %d, %d, %d, %d, %d\n", A[1][0],A[1][1],A[1][2],A[1][3],A[1][4]);
+    //printf("3st Row: %d, %d, %d, %d, %d\n", A[2][0],A[2][1],A[2][2],A[2][3],A[2][4]);
+    //printf("4st Row: %d, %d, %d, %d, %d\n", A[3][0],A[3][1],A[3][2],A[3][3],A[3][4]);
+    //printf("5st Row: %d, %d, %d, %d, %d\n", A[4][0],A[4][1],A[4][2],A[4][3],A[4][4]);
 
     //rho and pi steps
     for (x = 0; x < ARRAY_WIDTH; x++)
@@ -82,12 +82,12 @@ void roundFunction (Lane A[][ARRAY_WIDTH])
             B[(2*x+3*y) % 5][y]= rotateLeft(A[y][x], rotateArray[y][x]);
         }
     }
-    printf("Temporary State (B) after Rho and Pi:\n");
-    printf("1st Row: %d, %d, %d, %d, %d\n", B[0][0],B[0][1],B[0][2],B[0][3],B[0][4]);
-    printf("2st Row: %d, %d, %d, %d, %d\n", B[1][0],B[1][1],B[1][2],B[1][3],B[1][4]);
-    printf("3st Row: %d, %d, %d, %d, %d\n", B[2][0],B[2][1],B[2][2],B[2][3],B[2][4]);
-    printf("4st Row: %d, %d, %d, %d, %d\n", B[3][0],B[3][1],B[3][2],B[3][3],B[3][4]);
-    printf("5st Row: %d, %d, %d, %d, %d\n", B[4][0],B[4][1],B[4][2],B[4][3],B[4][4]);
+    //printf("Temporary State (B) after Rho and Pi:\n");
+    //printf("1st Row: %d, %d, %d, %d, %d\n", B[0][0],B[0][1],B[0][2],B[0][3],B[0][4]);
+    //printf("2st Row: %d, %d, %d, %d, %d\n", B[1][0],B[1][1],B[1][2],B[1][3],B[1][4]);
+    //printf("3st Row: %d, %d, %d, %d, %d\n", B[2][0],B[2][1],B[2][2],B[2][3],B[2][4]);
+    //printf("4st Row: %d, %d, %d, %d, %d\n", B[3][0],B[3][1],B[3][2],B[3][3],B[3][4]);
+    //printf("5st Row: %d, %d, %d, %d, %d\n", B[4][0],B[4][1],B[4][2],B[4][3],B[4][4]);
 
 
     //chi step
@@ -98,12 +98,12 @@ void roundFunction (Lane A[][ARRAY_WIDTH])
             A[y][x] = B[y][x] ^ ((~B[y][(x+1) % 5]) & B[y][(x+2) % 5]);
         }
     }
-	printf("State after Chi step:\n");
-	printf("1st Row: %d, %d, %d, %d, %d\n", A[0][0],A[0][1],A[0][2],A[0][3],A[0][4]);
-    printf("2st Row: %d, %d, %d, %d, %d\n", A[1][0],A[1][1],A[1][2],A[1][3],A[1][4]);
-    printf("3st Row: %d, %d, %d, %d, %d\n", A[2][0],A[2][1],A[2][2],A[2][3],A[2][4]);
-    printf("4st Row: %d, %d, %d, %d, %d\n", A[3][0],A[3][1],A[3][2],A[3][3],A[3][4]);
-    printf("5st Row: %d, %d, %d, %d, %d\n", A[4][0],A[4][1],A[4][2],A[4][3],A[4][4]);
+	//printf("State after Chi step:\n");
+	//printf("1st Row: %d, %d, %d, %d, %d\n", A[0][0],A[0][1],A[0][2],A[0][3],A[0][4]);
+    //printf("2st Row: %d, %d, %d, %d, %d\n", A[1][0],A[1][1],A[1][2],A[1][3],A[1][4]);
+    //printf("3st Row: %d, %d, %d, %d, %d\n", A[2][0],A[2][1],A[2][2],A[2][3],A[2][4]);
+    //printf("4st Row: %d, %d, %d, %d, %d\n", A[3][0],A[3][1],A[3][2],A[3][3],A[3][4]);
+    //printf("5st Row: %d, %d, %d, %d, %d\n", A[4][0],A[4][1],A[4][2],A[4][3],A[4][4]);
 
 
     return;
@@ -112,25 +112,39 @@ void roundFunction (Lane A[][ARRAY_WIDTH])
 
 int main() {
     int round = 0;
-    Lane A[ARRAY_WIDTH][ARRAY_WIDTH] = {1, 1, 1, 1, 1,
+    /*Lane A[ARRAY_WIDTH][ARRAY_WIDTH] = {1, 1, 1, 1, 1,
                         0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0};;
+*/
+Lane A[ARRAY_WIDTH][ARRAY_WIDTH] = {64321, 1, 0, 0, 0,
+                        0, 0, 32768, 0, 0,
+                        0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0};;
 
-       loop: for (round = 0; round < ROUNDS; round++)
+    printf("Initial Keccak Input : \n");
+    printf("1st Row: %d, %d, %d, %d, %d\n", A[0][0],A[0][1],A[0][2],A[0][3],A[0][4]);
+    printf("2st Row: %d, %d, %d, %d, %d\n", A[1][0],A[1][1],A[1][2],A[1][3],A[1][4]);
+    printf("3st Row: %d, %d, %d, %d, %d\n", A[2][0],A[2][1],A[2][2],A[2][3],A[2][4]);
+    printf("4st Row: %d, %d, %d, %d, %d\n", A[3][0],A[3][1],A[3][2],A[3][3],A[3][4]);
+    printf("5st Row: %d, %d, %d, %d, %d\n", A[4][0],A[4][1],A[4][2],A[4][3],A[4][4]);
+
+    loop: for (round = 0; round < ROUNDS; round++)
     {
-        printf("---------------Round %d--------------\n", round);
         roundFunction(A);
         //Iota step
         A[0][0] = A[0][0] ^ RC[round];
-        printf("Final state of round : \n");
-        printf("1st Row: %d, %d, %d, %d, %d\n", A[0][0],A[0][1],A[0][2],A[0][3],A[0][4]);
-        printf("2st Row: %d, %d, %d, %d, %d\n", A[1][0],A[1][1],A[1][2],A[1][3],A[1][4]);
-        printf("3st Row: %d, %d, %d, %d, %d\n", A[2][0],A[2][1],A[2][2],A[2][3],A[2][4]);
-        printf("4st Row: %d, %d, %d, %d, %d\n", A[3][0],A[3][1],A[3][2],A[3][3],A[3][4]);
-        printf("5st Row: %d, %d, %d, %d, %d\n", A[4][0],A[4][1],A[4][2],A[4][3],A[4][4]);
     }
+
+    printf("Final Keccak State: \n");
+    printf("1st Row: %d, %d, %d, %d, %d\n", A[0][0],A[0][1],A[0][2],A[0][3],A[0][4]);
+    printf("2st Row: %d, %d, %d, %d, %d\n", A[1][0],A[1][1],A[1][2],A[1][3],A[1][4]);
+    printf("3st Row: %d, %d, %d, %d, %d\n", A[2][0],A[2][1],A[2][2],A[2][3],A[2][4]);
+    printf("4st Row: %d, %d, %d, %d, %d\n", A[3][0],A[3][1],A[3][2],A[3][3],A[3][4]);
+    printf("5st Row: %d, %d, %d, %d, %d\n", A[4][0],A[4][1],A[4][2],A[4][3],A[4][4]);
+
     printf("Done!\n");
     return 0;
 }
