@@ -1,0 +1,17 @@
+Verify unsign long long size = 8, unsigned long size = 4, unsigned short size = 2
+=====Shift Right by bit size
+Unsigned long long value 1 >> 64 = 1
+Unsigned short value 1 >> 16 = 0
+Unsigned long value 1 >> 32 = 1
+=====Shift Right by 1/2 bit size
+Unsigned long long value 1 >> 32 = 0
+Unsigned short value 1 >> 8 = 0
+Unsigned long value 1 >> 16 = 0
+=====Shift Right by 2x bit size
+Unsigned long long value 1 >> 128 = 1
+Unsigned short value 1 >> 32 = 1
+Unsigned long value 1 >> 64 = 1
+=====Shift Right by bit size with different value
+Unsigned long long value 1337 >> 64 = 1337
+Unsigned short value 1337 >> 16 = 0
+Unsigned long value 1337 >> 32 = 1337
